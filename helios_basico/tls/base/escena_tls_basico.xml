@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <scene id="tls_basico" name="TLS Basico">
+        <part id="0">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="helios_asset/sceneparts/groundplane.obj"/>
+            </filter>
+            <filter type="scale">
+                <param type="double" key="scale" value="100" />
+            </filter>
+        </part>
+        <part id="1">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="helios_asset/sceneparts/black_tupelo_low.obj"/>
+                <param type="string" key="up" value="y" />
+            </filter>
+            <filter type="translate">
+                <param type="vec3" key="offset" value="0;15;0" />
+            </filter>
+            <filter type="scale">
+                <param type="double" key="scale" value="0.5" />
+            </filter>
+        </part>
+        <part id="2">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="helios_asset/sceneparts/sassafras_low.obj" />
+                <param type="string" key="up" value="y" />
+            </filter>
+            <filter type="translate">
+                <param type="vec3" key="offset" value="-10;15;0" />
+            </filter>
+            <filter type="scale">
+                <param type="double" key="scale" value="0.5" />
+            </filter>
+        </part>
+    </scene>
+</document>
