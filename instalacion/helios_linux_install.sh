@@ -31,4 +31,7 @@ cd cmake-build-release
 cmake -DBUILD_TYPE=Release -DPYTHON_VERSION=312 -DPYTHON_BINDING=1 -DBOOST_DYNAMIC_LIBS=0 \
     -DPCL_BINDING=0 -DBUDDING_METRICS=0 -DDATA_ANALYTICS=0 \
     ..
-make -j 8
+make -j 4
+
+# Copy HELIOS++ binary
+cp helios ../helios
