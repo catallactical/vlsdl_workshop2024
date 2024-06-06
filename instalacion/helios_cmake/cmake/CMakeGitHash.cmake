@@ -46,7 +46,9 @@ function(GitHashCompute)
     )
         GitHashWrite(${GIT_HASH})
         # Replace any @Var@ in helios_version.cpp from helios_version.in
-        configure_file(${pre_configure_file} ${post_configure_file} @ONLY)
+        if (EXISTS ${pre_configure_file})
+            configure_file(${pre_configure_file} ${post_configure_file} @ONLY)
+        endif()
     endif()
 endfunction()
 
