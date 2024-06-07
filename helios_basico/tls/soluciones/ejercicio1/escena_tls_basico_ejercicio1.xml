@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
-    <scene id="tls_basico" name="TLS Basico">
+    <scene id="tls_basico_ejercicio1" name="TLS Basico Ejercicio1">
         <part id="0">
             <filter type="objloader">
                 <param type="string" key="filepath" value="helios_asset/sceneparts/groundplane.obj"/>

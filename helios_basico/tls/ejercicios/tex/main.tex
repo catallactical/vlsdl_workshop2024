@@ -1,0 +1,85 @@
+% Especificación de documento
+\documentclass[]{article}
+\setlength{\parskip}{\baselineskip} % Espacios entre párrafos
+
+% Paquetes
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, portrait, margin=1in}
+
+
+% Cabecera
+\title{HELIOS básico: TLS}
+\author{Alberto Esmorís, Miguel Yermo}
+\date{}
+
+
+
+% Documento
+\begin{document}
+	
+	% Título
+	\maketitle
+	
+	
+	
+	% Introducción
+	\section*{Simulación TLS base}
+	La simulación TLS base consiste en un trípode sobre el cual se monta un escáner \textit{RIEGL VZ400} a $1.5$ metros de altura. Dicho trípode se coloca frente a una representación geométrica simplificada de un árbol y se activa el escáner en un campo de visión horizontal entre $[100, 225]$ grados y un campo de visión vertical entre $[-40, 60]$ grados. La velocidad de rotación horizontal es de $10$ grados por segundo. La Figura~\ref{fig:tls_base} representa la salida esperada al ejecutar la simulación TLS base.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/TLS_base}
+		\caption{Visualización en CloudCompare de la nube de puntos simulada en la primera etapa.}
+		\label{fig:tls_base}
+	\end{figure}
+
+
+	\pagebreak
+	
+
+	% Ejercicios
+	\subsection*{Ejercicio 1}
+	Reducir el campo de visión horizontal del escáner para que esté comprendido entro los $[130, 195]$ grados. El resultado de dicho ejercicio debe asemejarse a lo que se muestra en la Figura~\ref{fig:ejercicio1}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ejercicio1}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 1.}
+		\label{fig:ejercicio1}	
+	\end{figure}
+
+
+	\subsection*{Ejercicio 2}
+	Aumentar el campo de visión horizontal del escáner para que esté comprendido entre los $[60, 270]$ grados. El resultado de dicho ejercicio debe asemejarse a lo que se muestra en la Figura~\ref{fig:ejercicio2}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ejercicio2}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 2.}
+		\label{fig:ejercicio2}
+	\end{figure} 
+
+	
+	\pagebreak
+
+
+	\subsection*{Ejercicio 3}
+	Trasladar la posición del trípode sumándole el vector $\vec{u}=(-15, -30, 0)$. Invertir debidamente el campo de visión horizontal para que ahora el trípode escanee los árboles desde su nueva posición. Nótese que con la transposición indicada podría decirse que si antes el trípode estaba frente a los árboles pasará a encontrarse detrás de los mismos. El resultado de dicho ejercicio debe asemejarse a lo que se muestra en la Figura~\ref{fig:ejercicio3}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.7\linewidth]{img/ejercicio3}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 3.}
+		\label{fig:ejercicio3}
+	\end{figure} 
+
+	\subsubsection*{Solución}
+	Para resolver correctamente este ejercicio es necesario actualizar el campo de visión horizontal para mirar hacia atrás. Siendo $[130, 195]$ el intervalo angular de partida, se le suman $180$ grados a cada extremo para obtener $[280, 405]$. Opcionalmente, por mera conveniencia, se pueden restar $360$ grados a cada ángulo para expresar el intervalo tal que $[-80, 45] \subseteq [-\pi, \pi]$.
+
+\end{document}

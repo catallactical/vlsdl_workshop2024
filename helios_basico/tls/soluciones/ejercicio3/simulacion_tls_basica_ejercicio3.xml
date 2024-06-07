@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <scannerSettings id="scanset" active="true" pulseFreq_hz="100000" scanFreq_hz="120" headRotatePerSec_deg="10.0" />
+    <survey name="tls_basico_ejercicio3" scene="helios_basico/tls/soluciones/ejercicio3/escena_tls_basico_ejercicio3.xml#tls_basico_ejercicio3" platform="helios_asset/platforms.xml#tripod" scanner="helios_asset/scanners_tls.xml#riegl_vz400" >
+        <FWFSettings binSize_ns="0.2" beamSampleQuality="3" />
+        <leg>
+            <platformSettings x="-14.0" y="-5.5" onGround="true" />
+            <scannerSettings template="scanset" verticalAngleMin_deg="-40.0" verticalAngleMax_deg="60" headRotateStart_deg="-80" headRotateStop_deg="45" trajectoryTimeInterval_s="1.0"/>
+        </leg>
+    </survey>
+</document>
