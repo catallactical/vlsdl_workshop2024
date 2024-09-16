@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <survey name="mls_lineal_ejercicio2" scene="helios_basico/mls_lineal/soluciones/ejercicio2/escena_mls_lineal_ejercicio2.xml#mls_lineal_ejercicio2" platform="helios_asset/platforms.xml#tractor" scanner="helios_asset/scanners_tls.xml#riegl_vz400">		
+		<leg>
+			<platformSettings  x="-10" y="-10" z="0" onGround="true" movePerSec_m="3"/>
+			<scannerSettings  active="true" pulseFreq_hz="300000" scanAngle_deg="45" scanFreq_hz="100" headRotatePerSec_deg="0.00" headRotateStart_deg="0.00" headRotateStop_deg="0.00" trajectoryTimeInterval_s="0.05"/>
+		</leg>
+		
+		<leg>
+			<platformSettings  x="10" y="-10" z="0" onGround="true" movePerSec_m="3"/>
+			<scannerSettings  active="true" pulseFreq_hz="300000" scanAngle_deg="45" scanFreq_hz="100" headRotatePerSec_deg="0.00" headRotateStart_deg="0.00" headRotateStop_deg="0.00" trajectoryTimeInterval_s="0.05"/>
+		</leg>
+		
+		<leg>
+			<platformSettings  x="10" y="10" z="0" onGround="true" movePerSec_m="3"/>
+			<scannerSettings  active="true" pulseFreq_hz="300000" scanAngle_deg="45" scanFreq_hz="100" headRotatePerSec_deg="0.00" headRotateStart_deg="0.00" headRotateStop_deg="0.00" trajectoryTimeInterval_s="0.05"/>
+		</leg>
+		
+		<leg>
+			<platformSettings  x="-10" y="10" z="0" onGround="true" movePerSec_m="3"/>
+			<scannerSettings  active="true" pulseFreq_hz="300000" scanAngle_deg="45" scanFreq_hz="100" headRotatePerSec_deg="0.00" headRotateStart_deg="0.00" headRotateStop_deg="0.00" trajectoryTimeInterval_s="0.05"/>
+		</leg>
+		
+		<leg>
+			<platformSettings  x="-10" y="-10" z="0" onGround="true" movePerSec_m="3"/>
+			<scannerSettings  active="false" pulseFreq_hz="300000" scanAngle_deg="45" scanFreq_hz="100" headRotatePerSec_deg="0.00" headRotateStart_deg="0.00" headRotateStop_deg="0.00" trajectoryTimeInterval_s="0.05"/>
+		</leg>
+    </survey>
+</document>

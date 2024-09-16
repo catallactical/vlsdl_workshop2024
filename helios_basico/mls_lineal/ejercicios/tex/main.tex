@@ -1,0 +1,92 @@
+% Especificación de documento
+\documentclass[]{article}
+\setlength{\parskip}{\baselineskip} % Espacios entre párrafos
+
+% Paquetes
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, portrait, margin=1in}
+
+
+% Cabecera
+\title{HELIOS básico: MLS lineal}
+\author{Alberto Esmorís, Miguel Yermo}
+\date{}
+
+
+
+% Documento
+\begin{document}
+	
+	% Título
+	\maketitle
+	
+	
+	
+	% Introducción
+	\section*{Simulación MLS lineal base}
+	La simulación MLS lineal base consiste en un tractor en el cual se monta un escáner \textit{RIEGL VZ-400}. El tractor se desplaza en un terreno representado por un plano de suelo con varias plantas de trigo. La velocidad de crucero es de $3\;\text{m}/\text{s}$. El escáner tiene un campo de visión vertical entre $[-20, 20]$ grados. La Figura~\ref{fig:mls_lineal_base} representa la salida esperada al ejecutar la simulación ALS lineal base.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/MLS_lineal_base}
+		\caption{Visualización en CloudCompare de las nubes de puntos simuladas con ALS lineal. El suelo aparece coloreado de púrpura, las plantas de trigo de amarillo y la trayectoria del tractor empieza de color marrón y termina de color blanco.}
+		\label{fig:mls_lineal_base}
+	\end{figure}
+
+
+	\pagebreak
+	
+
+	% Ejercicios
+	\subsection*{Ejercicio 1}
+	Modificar la trayectoria del tractor para que haga una especie de L empezando en el punto $(-5, -30)$, pasando por el punto $(20, -30)$ y terminando en las coordenadas $(20, 30)$. Además, reducir la velocidad de crucero a $2\;\text{m}/\text{s}$. El resultado de dicho ejercicio debe asemejarse a lo que se muestra en la Figura~\ref{fig:ejercicio1}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ejercicio1}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 1.}
+		\label{fig:ejercicio1}
+	\end{figure}
+
+
+	\subsection*{Ejercicio 2}
+	Configurar una versión de la simulación base cuyo campo de visión vertical esté comprendido entre los $[-40, 40]$ grados. Además, el escáner debe realizar $100$ scanlines por segundo con $3,000$ pulsos cada una, es decir, un total de $300,000$ pulsos por segundo. El resultado de dicho ejercicio debe asemejarse a lo que se muestra en la Figura~\ref{fig:ejercicio2}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ejercicio2}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 2.}
+		\label{fig:ejercicio2}
+	\end{figure} 
+
+	
+	\pagebreak
+
+
+	\subsection*{Ejercicio 3}
+	Hacer una simulación que utilice rutas lineales en lugar del tractor para modelar la plataforma. La trayectoria de la nueva plataforma debe ser un cuadrado con lados de $12$ metros con centro en el punto $(0, 0)$. El escáner debe realizar $120$ scanlines por segundo de $2,500$ pulsos cada una. La montura debe modificarse para que, respecto del tractor original, el campo de visión vertical quede entre los $[-90, 0]$ grados. El resultado de este ejercicio debe parecerse a lo que representa la Figura~\ref{fig:ejercicio3}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.7\linewidth]{img/ejercicio3}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 3.}
+		\label{fig:ejercicio3}
+	\end{figure} 
+
+	\subsubsection*{Solución}
+	Una posible solución a este ejercicio, que corresponde con la Figura~\ref{fig:ejercicio3}, consiste en aplicar los siguientes cambios al XML de la simulación base:
+	
+	\begin{enumerate}
+		\item Reemplazar la plataforma \textit{tractor} por \textit{vehicle\_linearpath}.
+		\item Cambiar los puntos de referencia de la trayectoria para que las coordenadas $(x, y)$ estén en $\{-6, 6\}$ en vez de en $\{-10, ,10\}$.
+		\item Sobreescribir la configuración de montura añadiendo un elemento \textit{\textless scannerMount ... \textgreater \textless /scannerMount \textgreater} al XML de la simulación que rote $45$ grados hacia abajo la montura. Además, debe redefinirse el atributo \textit{scanAngle\_deg} para que cubra $2 \times 45$ grados. También se puede corregir la diferencia de la altura de montura entre el vehículo lineal y el tractor reconfigurando esta para que use la misma $z$ que el tractor.
+		\item Debe establecerse la frecuencia de pulso en $300,000\;\text{Hz}$ y la frecuencia de escaneo en $120\;\text{Hz}$.
+	\end{enumerate}
+
+\end{document}

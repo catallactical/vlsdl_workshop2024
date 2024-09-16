@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <survey name="mls_lineal_ejercicio1" scene="helios_basico/mls_lineal/soluciones/ejercicio1/escena_mls_lineal_ejercicio1.xml#mls_lineal_ejercicio1" platform="helios_asset/platforms.xml#tractor" scanner="helios_asset/scanners_tls.xml#riegl_vz400">		
+		<leg>
+			<platformSettings  x="-5.0" y="-30.0" z="0" onGround="true" movePerSec_m="2"/>
+			<scannerSettings  active="true" pulseFreq_hz="100000" scanAngle_deg="20" scanFreq_hz="50" headRotatePerSec_deg="0.00" headRotateStart_deg="0.00" headRotateStop_deg="0.00" trajectoryTimeInterval_s="0.05"/>
+		</leg>
+		
+		<leg>
+			<platformSettings  x="20.0" y="-30.0" z="0" onGround="true" movePerSec_m="2"/>
+			<scannerSettings  active="true" pulseFreq_hz="100000" scanAngle_deg="20" scanFreq_hz="50" headRotatePerSec_deg="0.00" headRotateStart_deg="0.00" headRotateStop_deg="0.00" trajectoryTimeInterval_s="0.05"/>
+		</leg>
+		
+		<leg>
+			<platformSettings  x="20.0" y="30.0" z="0" onGround="true" movePerSec_m="2"/>
+			<scannerSettings  active="false" pulseFreq_hz="100000" scanAngle_deg="20" scanFreq_hz="50" headRotatePerSec_deg="0.00" headRotateStart_deg="0.00" headRotateStop_deg="0.00" trajectoryTimeInterval_s="0.05"/>
+		</leg>		
+    </survey>
+</document>
