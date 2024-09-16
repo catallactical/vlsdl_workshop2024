@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<platformSettings id="platset" movePerSec_m="30" />
+    <scannerSettings active="true" id="scanset" pulseFreq_hz="300000" scanAngle_deg="5.0" scanFreq_hz="200" trajectoryTimeInterval_s="0.01"/>
+    <survey name="als_lineal_ejercicio1" scene="helios_basico/als_lineal/soluciones/ejercicio1/escena_als_lineal_ejercicio1.xml#als_lineal_ejercicio1" platform="helios_asset/platforms.xml#sr22" scanner="helios_asset/scanners_als.xml#riegl_vq-880g">
+		<leg>
+			<platformSettings  x="-30" y="-50" z="100.0" template="platset"/>
+			<scannerSettings template="scanset"/>
+		</leg>	
+		<leg>
+			<platformSettings  x="70" y="-50" z="100.0" template="platset"/>
+			<scannerSettings template="scanset" active="false"/>
+		</leg>
+		<leg>
+			<platformSettings x="70.0" y="0.0" z="100.0" template="platset"/>
+			<scannerSettings template="scanset" />
+		</leg>
+		<leg>
+			<platformSettings x="-30.0" y="0.0" z="100.0" template="platset"/>
+			<scannerSettings template="scanset" active="false"/>
+		</leg>
+		<leg>
+			<platformSettings x="-30.0" y="50.0" z="100.0" template="platset"/>
+			<scannerSettings template="scanset"/>
+		</leg>
+		<leg>
+			<platformSettings x="70.0" y="50.0" z="100.0" template="platset"/>
+			<scannerSettings template="scanset" active="false"/>
+		</leg>
+    </survey>
+</document>

@@ -1,0 +1,85 @@
+% Especificación de documento
+\documentclass[]{article}
+\setlength{\parskip}{\baselineskip} % Espacios entre párrafos
+
+% Paquetes
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, portrait, margin=1in}
+
+
+% Cabecera
+\title{HELIOS básico: ALS lineal}
+\author{Alberto Esmorís, Miguel Yermo}
+\date{}
+
+
+
+% Documento
+\begin{document}
+	
+	% Título
+	\maketitle
+	
+	
+	
+	% Introducción
+	\section*{Simulación ALS lineal base}
+	La simulación ALS lineal base consiste en un avión utilitario Cirrus SR-22 en el cual se monta un escáner \textit{RIEGL VQ-880g} volando a $100$ metros de altura. El avión vuela sobre una representación geométrica simplificada con un plano de suelo y varias figuras geométricas simples (cubos, esferas y cilindros) colocadas encima. La velocidad de crucero es de $30\;\text{m}/\text{s}$. El escáner tiene un campo de visión vertical entre $[-20, 20]$ grados. La Figura~\ref{fig:als_lineal_base} representa la salida esperada al ejecutar la simulación ALS lineal balse.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ALS_lineal_base}
+		\caption{Visualización en CloudCompare de las nubes de puntos simuladas con ALS lineal. La primera pasada se colorea en púrpura, la segunda en cyan y la tercera en amarillo.}
+		\label{fig:als_lineal_base}
+	\end{figure}
+
+
+	\pagebreak
+	
+
+	% Ejercicios
+	\subsection*{Ejercicio 1}
+	Reducir el campo de visión vertical del escáner para que esté comprendido entro los $[-5, 5]$ grados. El resultado de dicho ejercicio debe asemejarse a lo que se muestra en la Figura~\ref{fig:ejercicio1}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ejercicio1}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 1.}
+		\label{fig:ejercicio1}
+	\end{figure}
+
+
+	\subsection*{Ejercicio 2}
+	Aumentar la velocidad de crucero a $288\;\text{km}/\text{h}$. El resultado de dicho ejercicio debe asemejarse a lo que se muestra en la Figura~\ref{fig:ejercicio2}. Nótese que la principal diferencia con la simulación base es que la versión de este ejercicio tiene aproximadamente un $37\%$ de los puntos que aparecen en la simulación original.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ejercicio2}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 2.}
+		\label{fig:ejercicio2}
+	\end{figure} 
+
+	
+	\pagebreak
+
+
+	\subsection*{Ejercicio 3}
+	Añadir a la simulación una pasada en dirección ortogonal a las otras en la que el utilitario vuela por encima del cilindro y el cubo grande. \it{Pista: Las coordenadas del cilindro y el cubo pueden deducirse a partir del XML que define la escena y los OBJ que enlaza. Además, el cubo de interés es el más grande, es decir, el que tiene mayor escala en el XML de la escena.}
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.7\linewidth]{img/ejercicio3}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 3. Los puntos en púrpura representan la salida de las 3 pasadas originales. Los puntos en amarillo representan el resultado de la pasada ortogonal. Las líneas blancas simbolizan la ruta del utilitario en las pasadas originales. La línea roja representa la pasada ortogonal.}
+		\label{fig:ejercicio3}
+	\end{figure} 
+
+	\subsubsection*{Solución}
+	Una posible solución a este ejercicio, que corresponde con la Figura~\ref{fig:ejercicio3}, consiste en configurar una pasada que empiece en el punto $(5, -60, 100)$ y termine en el punto $(5, 60, 100)$. No obstante, la solución no es única, pues únicamente se pide una pasada ortogonal que pase aproximadamente por encima del cilindro y el cubo grande. Otro ejemplo de solución válida sería $(6, -50, 100)$ a $(6, 50, 100)$. 
+
+\end{document}
