@@ -1,0 +1,103 @@
+% Especificación de documento
+\documentclass[]{article}
+\setlength{\parskip}{\baselineskip} % Espacios entre párrafos
+
+% Paquetes
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, portrait, margin=1in}
+
+
+% Cabecera
+\title{HELIOS básico: ALS interpolado}
+\author{Alberto Esmorís, Miguel Yermo}
+\date{}
+
+
+
+% Documento
+\begin{document}
+	
+	% Título
+	\maketitle
+	
+	
+	
+	% Introducción
+	\section*{Simulación ALS interpolado base}
+	La simulación ALS interpolado base consiste en un avión utilitario Cirrus SR-22 en el cual se monta un escáner \textit{RIEGL VQ-880g} volando a $100$ metros de altura. El avión vuela sobre una representación geométrica simplificada con un plano de suelo y varias figuras geométricas simples (cubos, esferas y cilindros) colocadas encima. La trayectoria es una espiral, comenzando en el centro y terminando en el extremo más alejado tras cerca de 6 segundos de viaje. El escáner tiene un campo de visión vertical entre $[-15, 15]$ grados. La Figura~\ref{fig:als_interp_base} representa la salida esperada al ejecutar la simulación ALS interpolado base.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ALS_interp_base}
+		\caption{Visualización en CloudCompare de las nubes de puntos simuladas con ALS lineal. La nube de puntos resultante se colorea en morado, los puntos de la trayectoria aparecen ordenados en el tiempo de color marrón al principio y blanco al final.}
+		\label{fig:als_interp_base}
+	\end{figure}
+
+
+	\pagebreak
+	
+
+	% Ejercicios
+	\subsection*{Ejercicio 1}
+	Llevar a cabo la simulación base de ALS interpolado pero recorriendo apróximadamente la mitad de la trayectoria. El resultado de dicho ejercicio debe asemejarse a lo que se muestra en la Figura~\ref{fig:ejercicio1}. \textit{Pista: Los atributos "tStart" y "tEnd" para la especificación XML de plataformas interpoladas permiten resolver este ejercicio.}
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ejercicio1}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 1.}
+		\label{fig:ejercicio1}
+	\end{figure}
+
+
+	\pagebreak
+	
+
+	\subsection*{Ejercicio 2}
+	Llevar a cabo la simulación base de ALS interpolado en dos etapas. La primera etapa debe considerar el primer segundo de la trayectoria y la segunda etapa los dos últimos segundos. El resultado de este ejercicio debe asemejarse a lo que se muestra en la Figura~\ref{fig:ejercicio2}. En esta solución se ha optado por realizar un salto temporal para la plataforma desde el punto final de la primera etapa hasta el punto inicial de la segunda.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ejercicio2}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 2. Los puntos de la primera etapa de simulación aparecen en púrpura, los de la segunda etapa en cyan.}
+		\label{fig:ejercicio2}
+	\end{figure} 
+
+	
+	\pagebreak
+
+
+	\subsection*{Ejercicio 3}
+	La cardioide es una curva geométrica en el plano que recuerda tanto a la sección cruzada de una manzana como al símbolo habitualmente utilizado para representar un corazón. Paramétricamente, una cardiode de radio $a \in \mathbb{R}_{>0}$ puede describirse en función de un ángulo $\theta \in [0, 2\pi)$ tal y como se muestra en la Ecuación~\ref{eq:cardioid}.
+	
+	\begin{equation}
+		\begin{split}
+			x(\theta) =&\; 2a(1-\cos(\theta))\cos(\theta) \\
+			y(\theta) =&\; 2a(1-\cos(\theta))\sin(\theta)
+		\end{split}
+	\label{eq:cardioid}
+	\end{equation}
+
+	En este ejercicio se propone actualizar el script base de generación de trayectorias para que esta describa una curva cardioide de radio $20\;\text{m}$. Además, la coordenada vertical $z$ debe dejar de ser constante a $100\;\text{m}$ y experimentar una variación aleatoria que siga una distribución normal con una desviación típica aproximada de medio metro, i.e., $\sigma \approx 0.5$. El resultado de este ejercicio debe ser semejante al que se puede observar en la Figura~\ref{fig:ejercicio3}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.7\linewidth]{img/ejercicio3}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 3.}
+		\label{fig:ejercicio3}
+	\end{figure} 
+
+	\subsubsection*{Solución}
+	Una posible solución a este ejercicio, que corresponde con la Figura~\ref{fig:ejercicio3}, consiste en reprogramar el script de generación de trayectorias para:
+	
+	\begin{enumerate}
+		\item Modificar las ecuaciones paramétricas de $x$ e $y$ para que describan la curva cardioide.
+		\item Modificar la ecuación paramétrica de $z$ para sumarle $X \sim \mathcal{N}(\mu=0, \sigma=0.5)$ utilizando la función \textit{numpy.random.normal}.
+	\end{enumerate}
+
+\end{document}

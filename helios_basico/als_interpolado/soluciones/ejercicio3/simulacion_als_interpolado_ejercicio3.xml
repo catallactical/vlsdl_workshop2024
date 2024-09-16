@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <survey name="als_interpolado_ejercicio3" scene="helios_basico/als_interpolado/soluciones/ejercicio3/escena_als_interpolado_ejercicio3.xml#als_interpolado_ejercicio3" platform="interpolated" basePlatform="helios_asset/platforms.xml#sr22" scanner="helios_asset/scanners_als.xml#riegl_vq-880g">		
+		<leg>
+			<platformSettings 
+                trajectory="helios_basico/als_interpolado/soluciones/ejercicio3/trayectoria.csv"
+                tIndex="0" xIndex="1" yIndex="2" zIndex="3" rollIndex="4" pitchIndex="5" yawIndex="6"
+                slopeFilterThreshold="0.0" toRadians="false" syncGPSTime="false"
+            />
+			<scannerSettings  active="true" pulseFreq_hz="300000" scanAngle_deg="15" scanFreq_hz="200" trajectoryTimeInterval_s="0.01"/>
+		</leg>
+    </survey>
+</document>
