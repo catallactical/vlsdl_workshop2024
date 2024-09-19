@@ -1,0 +1,108 @@
+% Especificación de documento
+\documentclass[]{article}
+\setlength{\parskip}{\baselineskip} % Espacios entre párrafos
+
+% Paquetes
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, portrait, margin=1in}
+
+
+% Cabecera
+\title{HELIOS avanzado: Escáner multicanal}
+\author{Alberto Esmorís, Miguel Yermo}
+\date{}
+
+
+
+% Documento
+\begin{document}
+	
+	% Título
+	\maketitle
+	
+	
+	
+	% Introducción
+	\section*{Simulación con escáner multicanal}
+	La simulación multicanal se basa en la idea de que un modelo de escáner capaz de emitir más de un pulso a la vez, tantos como canales tenga. Puede utilizarse tanto para simular un sistema con varios escáneres como un escáner con múltiples canales. La Figura~\ref{fig:puck_estatico_multicanal} muestra una simulación donde se coloca un Velodyne VLP-16 (Puck) en el centro de una caja, en una posición fija. Se trata de un escáner con 16 canales que comparten el mismo origen pero están rotados alrededor del eje $x$ en $-15, -13, -11, -9, -7, -5, -3, -1, 1, 3, 5, 7, 9, 11, 13$ y $15$ grados cada uno. La Figura~\ref{fig:puck_movil_multicanal} muestra una simulación parecida a la anterior, que también usa un Velodyne VLP-16. En esta ocasión, el escáner está colocado sobre una plataforma terrestre móvil que se mueve de un extremo al otro dentro de la caja a lo largo del eje $x$, pasando por el centro.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/puck_estatico_multicanal}
+		\caption{Visualización en CloudCompare de las nubes de puntos TLS simuladas con un Velodyne VLP-16 (Puck) de 16 canales. Cada línea de puntos está pintada de un color distinto en función del canal al que pertenece.}
+		\label{fig:puck_estatico_multicanal}
+	\end{figure}
+
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.71\linewidth]{img/puck_movil_multicanal}
+		\caption{Visualización en CloudCompare de las nubes de puntos MLS simuladas con un Velodyne VLP-16 (Puck) de 16 canales. Cada línea de puntos está pintada de un color distinto en función del canal al que pertenece. La línea gruesa coloreada de marrón (inicio) a blanco (final) representa la trayectoria lineal de la plataforma.}
+		\label{fig:puck_movil_multicanal}
+	\end{figure}
+
+
+	También resulta posible montar un escáner multicanal en una plataforma aérea. Por ejemplo, puede simularse un Livox Mid-100 de 3 canales compartiendo el mismo origen pero rotando el sistema de referencia para cada canal alrededor del eje $z$ en $-30, 0$ y $30$ grados, respectivamente. La Figura~\ref{fig:als_toyblocks_multicanal} muestra el resultado de simular este escáner montado en un utilitario Cirrus SR-22 que vuelva a $100$ metros de altura sobre un plano de suelo con geometrías simples colocadas encima (cubos, cilindro y esfera).
+
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.76\linewidth]{img/ALS_toyblocks_multicanal}
+		\caption{Visualización en CloudCompare de las nubes de puntos ALS simuladas con un Livox Mid-100 de tres canales. Los puntos del primer canal se colorean de violeta, los del segundo de blanco y los del tercero de verde.}
+		\label{fig:als_toyblocks_multicanal}
+	\end{figure}
+
+
+
+
+	\pagebreak
+	
+
+	% Ejercicios
+	\subsection*{Ejercicio 1}
+	Modificar la simulación original del Velodyne Puck estático para que escanee aproximadamente la mitad de la caja en tres segundos. El resultado de esta simulación debe ser similar al que se muestra en la Figura~\ref{fig:ejercicio1}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ejercicio1}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 1.}
+		\label{fig:ejercicio1}
+	\end{figure}
+
+
+	\subsection*{Ejercicio 2}
+	Modificar la simulación original del Velodyne Puck estático para que utilice el Velodyne HDL-64E de 64 canales en lugar del Velodyne VLP-16 de 16 canales. El resultado de usar un Velodyne HDL-64E debe coincidir con el que se puede ver en la Figura~\ref{fig:ejercicio2}
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ejercicio2}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 2.}
+		\label{fig:ejercicio2}
+	\end{figure}
+
+
+	\pagebreak
+	
+
+	\subsection*{Ejercicio 3}
+	Modificar la simulación original del Velodyne Puck móvil para que escanee en dos etapas. La primera etapa debe escanear una mitad de la caja moviéndose de atrás hacia adelante a lo largo del eje $x$ con una velocidad de $90\;\mathrm{km}/\mathrm{h}$ y la segunda etapa debe escanear la otra mitad moviéndose en sentido opuesto con una velocidad de $33\;\mathrm{m}/\mathrm{s}$. El resultado obtenido debe ser similar al mostrado en la Figura~\ref{fig:ejercicio3}. \textit{Pista: Como la configuración del escáner Puck es especial (ver cuaderno de Jupyter sobre Velodyne VLP-16), no será suficiente con definir un intervalo angular de $180$ grados. Se recomienda adaptar la velocidad de rotación para que el tiempo de una rotación coincida con el tiempo total de viaje, i.e., el tamaño del intervalo de rotación entre la velocidad de rotación sea igual a la distancia recorrida entre la velocidad de la plataforma.}
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.8\linewidth]{img/ejercicio3}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 3. La primera etapa corresponde con los puntos coloreados por orden temporal, empezando en el violeta y terminando en el amarillo. La trayectoria descrita por la barra superior corresponde a la primera etapa, coloreando el instante inicial en marrón y el final en blanco. La segunda etapa corresponde con los puntos coloreados por orden temporal, empezando en el azul y terminando en el rojo. La trayectoria descrita por la barra inferior corresponde con la segunda etapa, coloreando el instante inicial en marrón y el final en blanco. Nótese que los pulsos simultáneas del Puck llegan tanto más arriba como más abajo cuando el escáner se encuentra más lejos de la zona escaneada, pero están más próximos entre sí en el eje $z$ cuando el escáner se encuentra más cerca de la zona escaneada. Este fenómeno se debe a que cuanto más próximo se encuentra el escáner de la superficie, menos tarda en impactar con la misma, aliviándose el efecto de la desviación angular en la distancia Euclídea.}
+		\label{fig:ejercicio3}
+	\end{figure} 
+
+	
+	\pagebreak
+
+
+	
+
+\end{document}

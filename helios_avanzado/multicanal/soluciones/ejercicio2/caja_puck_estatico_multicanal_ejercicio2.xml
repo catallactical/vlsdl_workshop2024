@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <scannerSettings id="scaset" active="true" pulseFreq_hz="20312" scanFreq_hz="0"/>
+    <survey name="puck_estatico_multicanal_ejercicio2" scene="helios_avanzado/multicanal/soluciones/ejercicio2/box_scene_ejercicio2.xml#box_scene" platform="helios_asset/platforms.xml#tripod" scanner="helios_asset/scanners_tls.xml#velodyne_hdl-64e">
+		<leg>
+            <platformSettings x="0" y="0" z="0" />
+			<scannerSettings template="scaset" headRotatePerSec_deg="360" headRotateStart_deg="0" headRotateStop_deg="360"/> 
+        </leg>
+    </survey>
+</document>

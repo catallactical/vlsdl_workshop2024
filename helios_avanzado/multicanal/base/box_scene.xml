@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <scene id="box_scene" name="box_scene">
+        <part>
+            <filter type="objloader">
+                <param type="string" key="filepath" value="helios_asset/sceneparts/box100.obj" />
+            </filter>
+        </part>
+    </scene>
+</document>
