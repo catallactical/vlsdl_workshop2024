@@ -30,12 +30,12 @@
 	
 	% Introducción
 	\section*{Simulación MLS lineal base}
-	La simulación MLS lineal base consiste en un tractor en el cual se monta un escáner \textit{RIEGL VZ-400}. El tractor se desplaza en un terreno representado por un plano de suelo con varias plantas de trigo. La velocidad de crucero es de $3\;\text{m}/\text{s}$. El escáner tiene un campo de visión vertical entre $[-20, 20]$ grados. La Figura~\ref{fig:mls_lineal_base} representa la salida esperada al ejecutar la simulación ALS lineal base.
+	La simulación MLS lineal base consiste en un tractor en el cual se monta un escáner \textit{RIEGL VZ-400}. El tractor se desplaza en un terreno representado por un plano de suelo con varias plantas de trigo. La velocidad de crucero es de $3\;\text{m}/\text{s}$. El escáner tiene un campo de visión vertical entre $[-20, 20]$ grados. La Figura~\ref{fig:mls_lineal_base} representa la salida esperada al ejecutar la simulación MLS lineal base.
 	
 	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=0.75\linewidth]{img/MLS_lineal_base}
-		\caption{Visualización en CloudCompare de las nubes de puntos simuladas con ALS lineal. El suelo aparece coloreado de púrpura, las plantas de trigo de amarillo y la trayectoria del tractor empieza de color marrón y termina de color blanco.}
+		\caption{Visualización en CloudCompare de las nubes de puntos simuladas con MLS lineal. El suelo aparece coloreado de púrpura, las plantas de trigo de amarillo y la trayectoria del tractor empieza de color marrón y termina de color blanco.}
 		\label{fig:mls_lineal_base}
 	\end{figure}
 
@@ -85,7 +85,7 @@
 	\begin{enumerate}
 		\item Reemplazar la plataforma \textit{tractor} por \textit{vehicle\_linearpath}.
 		\item Cambiar los puntos de referencia de la trayectoria para que las coordenadas $(x, y)$ estén en $\{-6, 6\}$ en vez de en $\{-10, ,10\}$.
-		\item Sobreescribir la configuración de montura añadiendo un elemento \textit{\textless scannerMount ... \textgreater \textless /scannerMount \textgreater} al XML de la simulación que rote $45$ grados hacia abajo la montura. Además, debe redefinirse el atributo \textit{scanAngle\_deg} para que cubra $2 \times 45$ grados. También se puede corregir la diferencia de la altura de montura entre el vehículo lineal y el tractor reconfigurando esta para que use la misma $z$ que el tractor.
+		\item Sobreescribir la configuración de montura añadiendo un elemento \textit{\textless scannerMount ... \textgreater \textless /scannerMount \textgreater} al XML de la simulación que rote $45$ grados hacia abajo la montura. Además, debe redefinirse el atributo \textit{scanAngle\_deg} para que cubra $2 \times 45$ grados. También se puede corregir la diferencia de la altura de montura entre el vehículo lineal y el tractor reconfigurando esta para que use la misma $z$ que el tractor (y también la misma $y$).
 		\item Debe establecerse la frecuencia de pulso en $300,000\;\text{Hz}$ y la frecuencia de escaneo en $120\;\text{Hz}$.
 	\end{enumerate}
 

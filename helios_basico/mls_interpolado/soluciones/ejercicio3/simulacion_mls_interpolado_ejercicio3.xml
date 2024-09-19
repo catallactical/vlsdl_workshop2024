@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <survey name="mls_interpolado_ejercicio3" scene="helios_basico/mls_interpolado/soluciones/ejercicio3/escena_mls_interpolado_ejercicio3.xml#mls_interpolado_ejercicio3" platform="interpolated" basePlatform="helios_asset/platforms.xml#tractor" scanner="helios_asset/scanners_tls.xml#riegl_vz400">
+		<scannerMount x="0" y="1" z="4.0" rotations="local">
+			<rot axis="z" angle_deg="60" />
+		</scannerMount>		
+		<leg>
+			<platformSettings 
+                trajectory="helios_basico/mls_interpolado/soluciones/ejercicio3/trayectoria.csv"
+                tIndex="0" xIndex="1" yIndex="2" zIndex="3" rollIndex="4" pitchIndex="5" yawIndex="6"
+                slopeFilterThreshold="0.0" toRadians="false" syncGPSTime="false"
+            />
+			<scannerSettings  active="true" pulseFreq_hz="200000" scanAngle_deg="30" scanFreq_hz="100" headRotatePerSec_deg="0.00" headRotateStart_deg="0.00" headRotateStop_deg="0.00" trajectoryTimeInterval_s="0.05"/>
+		</leg>
+    </survey>
+</document>

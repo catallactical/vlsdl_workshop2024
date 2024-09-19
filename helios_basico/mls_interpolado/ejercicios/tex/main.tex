@@ -1,0 +1,164 @@
+% Especificación de documento
+\documentclass[]{article}
+\setlength{\parskip}{\baselineskip} % Espacios entre párrafos
+
+% Paquetes
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, portrait, margin=1in}
+
+
+% Cabecera
+\title{HELIOS básico: MLS interpolado}
+\author{Alberto Esmorís, Miguel Yermo}
+\date{}
+
+
+
+% Documento
+\begin{document}
+	
+	% Título
+	\maketitle
+	
+	
+	
+	% Introducción
+	\section*{Simulación MLS interpolado base}
+	La simulación MLS interpolado base consiste en una base de plataforma tipo tractor en el cual se monta un escáner \textit{RIEGL VZ-400}. El tractor se desplaza en un terreno representado por un plano de suelo con varias plantas de trigo. La trayectoria describe una circunferencia alrededor del trigo. El escáner tiene un campo de visión vertical entre $[-20, 20]$ grados. La Figura~\ref{fig:mls_interp_base} representa la salida esperada al ejecutar la simulación MLS interpolado base.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/MLS_interp_base}
+		\caption{Visualización en CloudCompare de las nubes de puntos simuladas con MLS interpolado. El suelo aparece coloreado de púrpura, las plantas de trigo de amarillo y la trayectoria del tractor empieza de color marrón y termina de color blanco.}
+		\label{fig:mls_interp_base}
+	\end{figure}
+
+
+	\pagebreak
+	
+
+	% Ejercicios
+	\subsection*{Ejercicio 1}
+	Modificar la trayectoria del tractor para que describa una trayectoria de semicircunferencia en lugar de la circunferencia completa. El resultado de este ejercicio debe ser parecido al representado en la Figura~\ref{fig:ejercicio1}. Nótese que en esta solución, se considera la primera mitad de la circunferencia original en el dominio temporal, otras soluciones podrían seleccionar regiones distintas.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ejercicio1}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 1.}
+		\label{fig:ejercicio1}
+	\end{figure}
+
+
+	\subsection*{Ejercicio 2}
+	Configurar una versión de la simulación base cuyo campo de visión vertical esté comprendido entre los $[-30, 30]$ grados. Además, el escáner debe realizar $80$ scanlines por segundo con $2,500$ pulsos cada una, es decir, un total de $200,000$ pulsos por segundo. El resultado de dicho ejercicio debe asemejarse a lo que se muestra en la Figura~\ref{fig:ejercicio2}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ejercicio2}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 2.}
+		\label{fig:ejercicio2}
+	\end{figure} 
+
+	
+	\pagebreak
+
+
+	\subsection*{Ejercicio 3}
+	Hacer una simulación cuyo escáner debe realizar $100$ scanlines por segundo de $2,000$ pulsos cada una. La montura debe modificarse para que, respecto del tractor original, el campo de visión vertical quede entre los $[-50, 10]$ grados.
+	
+	Además, la trayectoria debe implementarse siguiente un modelo en tres partes: 1) aceleración, 2) viaje a velocidad constante, 3) desaceleración. En el momento de inicio de la trayectoria, tanto la velocidad como la aceleración iniciales son cero, por tanto la velocidad puede modelarse simplemente usando la Ecuación~\ref{eq:velocidad}, donde $a(t)$ representa el modelo de aceleración.
+	
+	\begin{equation}
+		v(t) = \int{a(t) dt}
+	\label{eq:velocidad}
+	\end{equation}
+	
+	Comenzando por la fase de aceleración, se quiere que para $0 <= t <= t^*$ esta siga un modelo cuadrático tal que \mbox{$a(t) = a^* + kt^2$} donde $a^*$, que es el valor máximo (pico) de aceleración, y el parámetro $k$ deben resolverse para que $a(0)=0$ y $v(t^*)=v^*$. Concretamente, $t^*=7.5$ es el tiempo total que toma la aceleración (en segundos) y $v^*=2.8$ es la velocidad constante (en $\mathrm{m}/\mathrm{s}$) que será utilizada durante la fase 2).
+	
+	Durante la fase de viaje, simplemente debe mantenerse la aceleración. Sea $t_*$ el instante de tiempo en el que comienza la desaceleración, entonces la fase 2) debe satisfacer $a(t) = 0$, $t^* < t < t_*$.
+	
+	Finalmente, para la fase de desaceleración se asume una constante de desaceleración $a_* = -0.75$ tal que $a(t) = a_*$ para $t_* \leq t \leq t_*+T$, donde $T$ es el tiempo total que tarda en desacelerarse hasta alcanzar velocidad cero, i.e., $v(t_*+T) = 0$.
+	
+	El resultado de este ejercicio debe parecerse a lo que representa la Figura~\ref{fig:ejercicio3}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=1.0\linewidth]{img/ejercicio3}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 3.}
+		\label{fig:ejercicio3}
+	\end{figure} 
+
+	
+	\pagebreak
+
+	\subsubsection*{Solución}
+	Una posible solución a este ejercicio, que corresponde con la Figura~\ref{fig:ejercicio3}, consiste en aplicar los siguientes cambios al XML de la simulación base:
+	
+	\begin{enumerate}
+		\item Sobreescribir la configuración de montura añadiendo un elemento \textit{\textless scannerMount ... \textgreater \textless /scannerMount \textgreater} al XML de la simulación que rote $60$ grados hacia abajo la montura. Además, debe redefinirse el atributo \textit{scanAngle\_deg} para que cubra $2 \times 30$ grados.
+		\item Debe establecerse la frecuencia de pulso en $200,000\;\text{Hz}$ y la frecuencia de escaneo en $100\;\text{Hz}$.
+	\end{enumerate}
+
+	Será necesario también modificar el script de generación de la trayectoria para modelizar el comportamiento de la plataforma. En primer lugar, se resuelve $v(t)$ como se muestra en la Ecuación~\ref{eq:velocidad_solucion}.
+	
+	\begin{equation}
+		v(t) = a^*t + k\left[
+			\dfrac{t^3}{3} - \dfrac{t^*t^2}{2} + \left(\dfrac{t^*}{2}\right)^2t
+		\right]
+		\label{eq:velocidad_solucion}
+	\end{equation}
+
+	Ahora se puede plantear el sistema de ecuaciones $a(0)=0, v(t^*) = v^*$ tal y como se muestra en la Ecuación~\ref{eq:sistema_aceleracion}. Al resolver este sistema se obtiene que el pico de aceleración debe ser $a^* = \dfrac{3v^*}{2t^*}$ y que el parámetro debe ser $k=-\dfrac{6v^*}{(t^*)^3}$. Una vez resuelto el sistema puede calcularse la velocidad de la trayectoria en cualquier instante de tiempo durante la fase de aceleración, i.e., para $t \in [0, t^*]$.
+	
+	\begin{equation}
+		\left.\begin{split}
+			a^* + \left(-\dfrac{t^*}{2}\right)^2 k =&\; 0 \\
+			t^* a^* + \dfrac{7}{12} (t^*)^3 k =&\; v^*
+		\end{split}\right\}
+	\label{eq:sistema_aceleracion}
+	\end{equation}
+
+	Para actualizar la posición de la plataforma es necesario considerar la distancia recorrida. Para una curva parametrizada por un ángulo $\theta$ esta corresponde con la integral de la norma del gradiente, tal y como se muestra en la Ecuación~\ref{eq:distancia_parametrica}. En este ejercicio se usa una trayectoria circular $F(\theta) = (x(\theta), y(\theta))$ donde $x(\theta)=r \cos(\theta)$, $y(\theta) = r \sin(\theta)$, con un radio de $r=50$ metros.
+	
+	\begin{equation}
+		\int_{\theta_{i-1}}^{\theta_{i}} \lVert\nabla_{\theta} F\rVert d\theta = r(\theta_i - \theta_{i-1})
+	\label{eq:distancia_parametrica}
+	\end{equation}
+
+	De lo anterior se sigue que la velocidad en un instante $t_i \in \mathbb{R}_{>0}$ de la simulación se rige por la Ecuación~\ref{eq:velocidad_y_distancia}, siendo $\Delta t$ el tiempo por iteración, i.e., $t_{i} = t_{i-1} + \Delta t$. Por tanto, en cada iteración puede actualizarse el ángulo del modelo paramétrico sumándole $r^{-1}v(t_i)\Delta t$.
+	
+	\begin{equation}
+		v(t_i) = r \dfrac{\theta_{i} - \theta_{i-1}}{\Delta t} \iff \theta_i = \theta_{i-1} + \dfrac{v(t_i)\Delta t}{r}
+	\label{eq:velocidad_y_distancia}		
+	\end{equation}
+	
+	Para la fase de viaje a velocidad constante, basta con actualizar el ángulo en cada iteración conforme a la Ecuación~\ref{eq:velocidad_y_distancia} asumiendo que $v(t_i) = v^*$ para $t^* < t_i < t_*$, donde $t_*$ representa el instante de tiempo en el que debe comenzar la fase de desaceleración.
+	
+	Por último, para modelar la desaceleración debe calcularse primero cuanto tiempo $T$ tomará desacelerar desde $v^*$ hasta cero. Como en esta fase se usa aceleración constante, se tiene $v(t) = a_*t+v^*$. Resolviendo $v(T)=0$ se puede hallar $T=-v^*/a_*$. Ahora hay que encontrar en que instante temporal debe comenzarse la desaceleración para recorrer la distancia pendiente de la circunferencia de manera que se termine con velocidad cero. Lo anterior equivale a resolver la integral de la Ecuación~\ref{eq:instante_desaceleracion} para $t_*$. Nótese que el ángulo del modelo paramétrico en el instante que comienza la fase de desaceleración viene determinado por $\theta(t_*) =  v^* \Delta{t} (t_* - t^*)/r + \theta(t^*)$ donde $\theta(t^*)$ es un valor conocido ya que se trata del ángulo de la plataforma en el momento en que terminó la fase de desaceleración.
+	
+	\begin{equation}
+		\int_{0}^{T}{v(t) dt} = \int_{\theta(t_*)}^{\pi}{\lVert{\nabla_\theta F}\rVert} d\theta \implies
+		t_* = - \dfrac{
+			T^{2} {a_*} - 2 \pi r + 2 T {v^*} + 2 r {\theta(t^*)} - 2 v^* {t^*}
+		}{
+			2 v^*
+		}
+	\label{eq:instante_desaceleracion}		
+	\end{equation}
+
+	El modelo de trayectoria propuesto se representa en la Figura~\ref{fig:explicacion3} incluyendo las tres fases: 1) aceleración, 2) viaje, 3) desaceleración.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=1.0\linewidth]{img/explicacion3}
+		\caption{Los gráficos en esta imagen representan la trayectoria simulada coloreada de principio (violeta) a fin (amarillo), la velocidad y la aceleración del modelo, una comparativa entre la velocidad modelada y la esperada y el ángulo $\theta$ del modelo paramétrico en el tiempo.}
+		\label{fig:explicacion3}
+	\end{figure} 
+
+\end{document}
