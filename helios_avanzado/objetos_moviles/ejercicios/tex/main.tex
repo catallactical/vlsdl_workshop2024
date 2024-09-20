@@ -1,0 +1,116 @@
+% Especificación de documento
+\documentclass[]{article}
+\setlength{\parskip}{\baselineskip} % Espacios entre párrafos
+
+% Paquetes
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, portrait, margin=1in}
+
+
+% Cabecera
+\title{HELIOS avanzado: Escáner multicanal}
+\author{Alberto Esmorís, Miguel Yermo}
+\date{}
+
+
+
+% Documento
+\begin{document}
+	
+	% Título
+	\maketitle
+	
+	
+	
+	% Introducción
+	\section*{Simulación con objetos móviles}
+	Las simulaciones de HELIOS soportan objetos móviles, esto es, los objetos de la escena pueden moverse durante el transcurso de una simulación. Para ello, se contemplan todos los movimientos rígidos posibles en $\mathbb{R}^{3}$: 1) identidad, 2) traslación, 3) plano de simetría, 4) simetría deslizante, 5) rotación alrededor de un eje, 6) movimiento helicoidal y 7) simetría rotatoria. Estos se agrupan en secuencias que se calculan durante un intervalo determinado de la simulación, una secuencia puede ser infinita o tener duración finita. Cuando una secuencia con duración finita termina puede suponer el fin del movimiento o bien venir seguida de otra secuencia distinta.
+	
+	Los movimientos rígidos son endomorfismos (mapas de un espacio al mismo espacio) isométricos (preservan las distancias entre puntos) representados mediante aplicaciones afines $\pmb{y} = \pmb{c} + \pmb{A} \pmb{x}$. Concretamente en un espacio Euclídeo 3D $\pmb{x} \in \mathbb{R}^{3}$ es el punto de entrada que se transforma, $\pmb{A} \in \mathbb{R}^{3\times3}$ es la matriz que representa la transformación en los ejes de la base, $\pmb{c} \in \mathbb{R}^3$ es el vector que representa la traslación e $\pmb{y} \in \mathbb{R}^{3}$ es la versión transformada de $\pmb{x}$. Cualesquiera aplicaciones afines $\pmb{y}_1 = \pmb{c}_1 + \pmb{A}_1 \pmb{x}$, $\pmb{y}_2 = \pmb{c}_2 + \pmb{A}_2 \pmb{x}$ pueden componerse asumiendo que la salida de la primera es la entrada de la segunda $\pmb{y}_2 = \pmb{c}_2 + \pmb{A}_2 (\pmb{c}_1 + \pmb{A}_1 \pmb{x})$. Sean $\pmb{A} = \pmb{A}_2 \pmb{A}_1$ y $\pmb{c} = \pmb{c}_2 + \pmb{A}_2 \pmb{c}_1$, se tendrá una única aplicación afín $(\pmb{c}_2 + \pmb{A}_2 \pmb{c}_1) + \pmb{A}_2 \pmb{A}_1 \pmb{x} = \pmb{c} + \pmb{A}\pmb{x}$. Esta propiedad implica que en HELIOS cualquier secuencia de movimientos rígidos se compone para obtener una única aplicación afín de manera que sólo es necesario computar una aplicación afín por geometría móvil para representar cualquier secuencia de movimientos rígidos.
+
+	Las escenas con movimientos rígidos trabajan con 3 nociones de frecuencia: 1) frecuencia de la escena $F_{\mathrm{scene}}$, 2) frecuencia del objeto $F_{\mathrm{obj}}$ y 3) frecuencia del árbol k-dimensional (KDTree) $F_{\mathrm{kdt}}$. Puede definirse la frecuencia de simulación $F_{\mathrm{sim}}$ como la mayor frecuencia de la simulación, que generalmente es la frecuencia de pulso. Entonces, es posible conocer el número de veces que se aplicará el movimiento por segundo calculando $F_{sim}/(F_{\mathrm{scene}} F_{\mathrm{obj}})$. Además, el número de veces por segundo que se actualizará el KDTree vendrá dado por $F_{sim}/(F_{\mathrm{scene}} F_{\mathrm{obj}} F_{\mathrm{kdt}})$. Resulta posible especificar las frecuencias utilizando XML tal que 1) \textit{dynStep} en un elemento \textit{\textless scene \textgreater}, 2) \textit{dynStep} en un elemento \textit{\textless part \textgreater} y 3) \textit{kdtDynStep} en un elemento \textit{\textless part \textgreater}. Alternativamente, es posible especificar el tiempo por operación para $t \in (0, 1]$ utilizando XML tal que 1) \textit{dynTimeStep} en un elemento \textit{\textless scene \textgreater}, 2) \textit{dynTimeStep} en un elemento \textit{\textless part \textgreater} y 3) \textit{kdtDynTimeStep} en un elemento \textit{\textless part \textgreater}. Nótese que al usar especificaciones de tiempo únicamente se considerará la más concreta, i.e., la de parte/objeto prevalecerá sobre la escena.
+	
+	La Figura~\ref{fig:cubo_animado} muestra una simulación con un escáner TLS en la cual un cubo se mueve mientras se produce el escaneo. Como resultado, puede observarse el cubo estirado como si fuese un rectángulo. La Figura~\ref{fig:coches_animados} muestra una simulación con un escáner MLS en la cual dos vehículos se mueven a la vez que la plataforma durante el escaneo. Como resultado, pueden observarse puntos representando la posición de los vehículos en movimiento.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.90\linewidth]{img/dyn_cube_tls}
+		\caption{Visualización en CloudCompare de la nubes de puntos TLS simuladas con un RIEGL VZ400. Los puntos del plano de suelo se colorean de violeta, el cubo móvil se colorea de amarillo.}
+		\label{fig:cubo_animado}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.90\linewidth]{img/mls_urban_dyn}
+		\caption{Visualización en CloudCompare de la nubes de puntos MLS simuladas con un Velodyne HDL-64E de 64 canales. Los objetos escaneados están coloreados por clase (marrón para suelo, rojo para edificios, verde para plantas y cyan para vehículos). La línea de puntos coloreada de violeta (principio) a amarillo (fin) representa la trayectoria del vehículo que porta el escáner.}
+		\label{fig:coches_animados}
+	\end{figure}
+
+
+
+	\pagebreak
+	
+
+	% Ejercicios
+	\subsection*{Ejercicio 1}
+	Especificar la simulación original TLS con RIEGL VZ400 escaneando un cubo en movimiento pero utilizando el formato temporal en lugar de los pasos discretos, es decir, usando \textit{dynTimeStep} y \textit{kdtDynTimeStep} en vez de \textit{dynStep} y \textit{kdtDynStep}. El resultado debe ser similar a la Figura~\ref{fig:cubo_animado}.
+
+
+	\subsection*{Ejercicio 2}
+	Modificar la simulación original del TLS con RIEGL VZ400 para que el cubo rote alrededor del eje $z$ centrado en si mismo con una velocidad de $90\,^{\circ}/s$. El resultado de esta simulación debe parecerse a lo que se muestra en la Figura~\ref{fig:ejercicio2}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.90\linewidth]{img/ejercicio2}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 2.}
+		\label{fig:ejercicio2}
+	\end{figure}
+
+
+	\subsection*{Ejercicio 3}
+	Modificar la simulación original del TLS con RIEGL VZ400 para que el cubo rote alrededor del eje $z$ centrado en si mismo con una velocidad de $540\,^{\circ}/s$ mientras se traslada al doble de velocidad que en el caso original. La posición inicial del cubo debe trasladarse en $(-6, 18)$ respecto del caso original. El resultado de esta simulación debe parecerse a lo que se muestra en la Figura~\ref{fig:ejercicio3}. \textbf{Advertencia:} \textit{La paralelización que maneja objetos dinámicos puede interferir con la paralelización base. En caso de errores de ejecución inesperados, se recomienda usar el argumento} \verb|--kdtGeomJobs 1|. 
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ejercicio3}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 3.}
+		\label{fig:ejercicio3}
+	\end{figure}
+
+
+	\pagebreak
+	
+
+	\subsection*{Ejercicio 4}
+	Crear una escena que consista en un plano de suelo y un coche. El coche debe moverse en línea recta a una velocidad de $33 \;\mathrm{km}/\mathrm{h}$ durante $20$ segundos. Esta escena debe escanearse simulando un TLS equipado con RIEGL VZ400 cuyo campo de visión horizontal debe estar entre los $[-90, 90]$ grados, situado aproximadamente a $200$ metros del punto de partida del coche. La simulación debe constar de dos etapas. La primera debe cubrir el movimiento del coche, la segunda debe escanear la escena con el coche quieto tras llegar a su destino.
+
+	\begin{figure}[htb]
+		\centering
+		%\includegraphics[width=0.8\linewidth]{img/ejercicio4}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 4.}
+		\label{fig:ejercicio4}
+	\end{figure} 
+	
+	\pagebreak
+	
+	
+	\subsection*{Ejercicio 5}
+	Modificar la simulación creada en el ejercicio 4 para que el coche viaje durante $9$ segundos. Añadir otro coche que comienza en el otro extremo de la recta, situado a $184$ metros del coche original y avanza en dirección hacia el primero durante $9$ segundos. La simulación debe constar también de dos etapas. La primera debe cubrir el movimiento de los coches durante $9$ segundos, la segunda debe escanear la escena con los coches quietos tras haber llegado a destino.
+	
+	\begin{figure}[htb]
+		\centering
+		%\includegraphics[width=0.8\linewidth]{img/ejercicio5}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 5.}
+		\label{fig:ejercicio5}
+	\end{figure} 
+
+
+	
+
+\end{document}

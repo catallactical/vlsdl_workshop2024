@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <scannerSettings headRotatePerSec_deg="3600" scanFreq_hz="0" scanAngle_deg="1" pulseFreq_hz="20312" active="true" id="hdl-64e"/>
+    <survey name="mls_urban_dyn" scene="helios_avanzado/objetos_moviles/base/urban_dyn_scene.xml#urban_dyn" platform="helios_asset/platforms.xml#vehicle_linearpath" scanner="helios_asset/scanners_tls.xml#velodyne_hdl-64e">
+        <leg>
+            <platformSettings  x="8.2" y="-20" z="7.1" movePerSec_m="11.11"/>
+            <scannerSettings  template="hdl-64e" headRotateStart_deg="0.0" headRotateStop_deg="7560.0" trajectoryTimeInterval_s="0.01"/>
+        </leg>
+        <leg>
+            <platformSettings  x="6.5" y="60" z="6.8" movePerSec_m="11.11"/>
+            <scannerSettings template="hdl-64e" active="false"/>
+        </leg>
+    </survey>
+</document>

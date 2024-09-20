@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <survey name="dyn_cube_tls_ejercicio3" scene="helios_avanzado/objetos_moviles/soluciones/ejercicio3/dyn_cube_scene_ejercicio3.xml#dyn_cube_scene_ejercicio3" platform="helios_asset/platforms.xml#tripod" scanner="helios_asset/scanners_tls.xml#riegl_vz400">
+		<leg>
+            <platformSettings  x="-30" y="-30.0" z="0" onGround="true"/>
+            <scannerSettings  active="true" pulseFreq_hz="100000" verticalAngleMin_deg="-40.0" verticalAngleMax_deg="60.0" scanFreq_hz="120" headRotatePerSec_deg="-10.00" headRotateStart_deg="340.0" headRotateStop_deg="220.0"/>
+        </leg>
+    </survey>
+</document>
