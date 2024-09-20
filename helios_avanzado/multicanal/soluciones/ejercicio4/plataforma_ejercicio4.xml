@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<document>
+
+	<platform id="dron" name="Dron" type="linearpath">
+		<scannerMount z="0.5">
+			<rot axis="x" angle_deg="-135" />
+			<rot axis="z" angle_deg="90" />
+		</scannerMount>
+	</platform>
+	
+</document>

@@ -95,12 +95,36 @@
 	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=0.8\linewidth]{img/ejercicio3}
-		\caption{Visualización en CloudCompare de la solución del ejercicio 3. La primera etapa corresponde con los puntos coloreados por orden temporal, empezando en el violeta y terminando en el amarillo. La trayectoria descrita por la barra superior corresponde a la primera etapa, coloreando el instante inicial en marrón y el final en blanco. La segunda etapa corresponde con los puntos coloreados por orden temporal, empezando en el azul y terminando en el rojo. La trayectoria descrita por la barra inferior corresponde con la segunda etapa, coloreando el instante inicial en marrón y el final en blanco. Nótese que los pulsos simultáneas del Puck llegan tanto más arriba como más abajo cuando el escáner se encuentra más lejos de la zona escaneada, pero están más próximos entre sí en el eje $z$ cuando el escáner se encuentra más cerca de la zona escaneada. Este fenómeno se debe a que cuanto más próximo se encuentra el escáner de la superficie, menos tarda en impactar con la misma, aliviándose el efecto de la desviación angular en la distancia Euclídea.}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 3. La primera etapa corresponde con los puntos coloreados por orden temporal, empezando en el violeta y terminando en el amarillo. La trayectoria descrita por la barra superior corresponde a la primera etapa, coloreando el instante inicial en marrón y el final en blanco. La segunda etapa corresponde con los puntos coloreados por orden temporal, empezando en el azul y terminando en el rojo. La trayectoria descrita por la barra inferior corresponde con la segunda etapa, coloreando el instante inicial en marrón y el final en blanco. Nótese que los pulsos simultáneas del Puck llegan tanto más arriba como más abajo cuando el escáner se encuentra más lejos de la zona escaneada, pero están más próximos entre sí en el eje $z$ cuando el escáner se encuentra más cerca de la zona escaneada. Este fenómeno se debe a que cuanto más próximo se encuentra el escáner de la superficie, menos tarda en impactar con la misma, aliviándose el efecto de la desviación angular.}
 		\label{fig:ejercicio3}
 	\end{figure} 
 
+
+	\pagebreak
+	
+
+	\subsection*{Ejercicio 4}
+	Reconfigurar la simulación ALS basada en el Livox Mid-100 para utilizar un RIEGL VQ-1560i de dos canales en lugar del Livox original. Además, el intervalo angular de escaneo debe estar entre $[-15, 15]$ grados, cada segundo deben realizarse $250$ scanlines de $1000$ pulsos cada una. La plataforma debe moverse a $80\;\mathrm{km}/\mathrm{h}$, volando a una altura de $50$ metros. La trayectoría debe ser en forma de L empezando en $(-70, -20)$, pasando por $(-30, -20)$ y terminando en $(-30, 60)$. Debe crearse una plataforma específica para esta simulación donde el punto de montaje esté a medio metro de altura respecto del origen de la plataforma, rotado $-135$ grados alrededor del eje $x$ y $90$ grados alrededor del eje $z$.
+
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.8\linewidth]{img/ejercicio4}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 4. La nube de puntos de la primera etapa aparece de color rojo, la de la segunda etapa de azul. La trayectoría se representa por los puntos en forma de L, correspondiendo el color marrón con el inicio de la trayectoria y el blanco con el final.}
+		\label{fig:ejercicio4}
+	\end{figure} 
 	
 	\pagebreak
+	
+	
+	\subsection*{Ejercicio 4}
+	Reconfigurar la simulación ALS basada en el Livox Mid-100 para utilizar una versión modificada de este escáner con una calidad uno de muestreo de haz y cuatro canales en lugar de tres. Los canales deben estar montados con rotaciones alrededor del eje $z$ de $-45, -15, 15$ y $45$ grados, respectivamente. El intervalo angular de escaneo debe estar entre los $[-15, 15]$ grados. La plataforma debe desplazarse con una velocidad de $15\;\mathrm{m}/\mathrm{s}$.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.8\linewidth]{img/ejercicio5}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 5. Los puntos coloreados de azul corresponden al primer canal, verde el segundo, amarillo el tercero y rojo el cuarto. Las dos rectas superiores representan la trayectoria de la plataforma cuando el escáner está activo, coloreando de azul el instante inicial y de rojo el final.}
+		\label{fig:ejercicio5}
+	\end{figure} 
 
 
 	

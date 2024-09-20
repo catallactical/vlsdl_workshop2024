@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<document>
+	<scanner id="livox-mid-100-experimental"
+	     accuracy_m="0.02"
+	     beamDivergence_rad="0.0027"
+	     name="livox-mid-100-experimental"
+	     optics="risley"
+	     pulseFreqs_Hz="50000"
+	     pulseLength_ns="4"
+	     rangeMin_m="2"
+	     scanAngleMax_deg="35"
+	     scanAngleEffectiveMax_deg = "35"
+	     rotorFreq1_Hz = "7294"
+	     rotorFreq2_Hz = "-4664"
+	     wavelength_nm="905"
+	>
+		<channels>
+			<channel id="0">
+				<FWFSettings beamSampleQuality="1"/>	
+				<beamOrigin x="0" y="0" z="0">
+					<rot axis="z" angle_deg="-45"/>
+				</beamOrigin>
+			</channel>
+			<channel id="1">
+				<FWFSettings beamSampleQuality="1"/>
+				<beamOrigin x="0" y="0" z="-15">
+				</beamOrigin>
+			</channel>
+			<channel id="2">
+				<FWFSettings beamSampleQuality="1"/>
+				<beamOrigin x="0" y="0" z="0">
+					<rot axis="z" angle_deg="15"/>
+				</beamOrigin>
+			</channel>
+			<channel id="3">
+				<FWFSettings beamSampleQuality="1"/>
+				<beamOrigin x="0" y="0" z="0">
+					<rot axis="z" angle_deg="45"/>
+				</beamOrigin>
+			</channel>
+		</channels>
+		<FWFSettings beamSampleQuality="1"/>
+	</scanner>
+</document>
