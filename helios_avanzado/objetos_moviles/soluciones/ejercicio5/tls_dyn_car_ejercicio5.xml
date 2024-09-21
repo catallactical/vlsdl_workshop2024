@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <survey name="dyn_car_tls_ejercicio5" scene="helios_avanzado/objetos_moviles/soluciones/ejercicio5/dyn_car_scene_ejercicio5.xml#dyn_car_scene_ejercicio5" platform="helios_asset/platforms.xml#tripod" scanner="helios_asset/scanners_tls.xml#riegl_vz400">
+		<leg>
+            <platformSettings  x="0" y="-111.803398875" z="0" onGround="true"/>
+            <scannerSettings  active="true" pulseFreq_hz="300000" verticalAngleMin_deg="-10" verticalAngleMax_deg="30.0" scanFreq_hz="120" headRotatePerSec_deg="-33.333" headRotateStart_deg="50" headRotateStop_deg="-50"/>
+        </leg>
+		<leg>
+            <platformSettings  x="0" y="-111.803398875" z="0" onGround="true"/>
+            <scannerSettings  active="true" pulseFreq_hz="300000" verticalAngleMin_deg="-10" verticalAngleMax_deg="30.0" scanFreq_hz="120" headRotatePerSec_deg="-33.333" headRotateStart_deg="50" headRotateStop_deg="-50"/>
+        </leg>
+		<leg>
+            <platformSettings  x="0" y="-111.803398875" z="0" onGround="true"/>
+            <scannerSettings  active="true" pulseFreq_hz="300000" verticalAngleMin_deg="-10" verticalAngleMax_deg="30.0" scanFreq_hz="120" headRotatePerSec_deg="-33.333" headRotateStart_deg="50" headRotateStop_deg="-50"/>
+        </leg>
+		<leg>
+            <platformSettings  x="0" y="-111.803398875" z="0" onGround="true"/>
+            <scannerSettings  active="true" pulseFreq_hz="300000" verticalAngleMin_deg="-10" verticalAngleMax_deg="30.0" scanFreq_hz="120" headRotatePerSec_deg="-33.333" headRotateStart_deg="50" headRotateStop_deg="-50"/>
+        </leg>
+    </survey>
+</document>

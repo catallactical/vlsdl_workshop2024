@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <scene id="dyn_car_scene_ejercicio4" name="DynCarScene" dynStep="500">
+		<part id="1">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="helios_asset/sceneparts/groundplane.obj" />
+            </filter>
+            <filter type="scale">
+                <param type="double" key="scale" value="500" />
+            </filter>
+        </part>
+		<part dynStep="10" kdtDynStep="10" id="2">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="helios_asset/sceneparts/urban_dyn/vivaro.obj" />
+                <param type="string" key="up" value="z" />
+            </filter>
+			<filter type="rotate">
+				<param key="rotation" type="rotation">
+					<rot angle_deg="-90" axis="z"/>
+				</param>
+			</filter>
+			<filter type="scale">
+                <param type="double" key="scale" value="1.5" />
+            </filter>
+			<filter type="translate">
+				<param type="vec3" key="offset" value="-175.0;14.0;-11.303706" />
+			</filter>
+			<dmotion id ="forward" loop="1200">
+				<motion type="translation" vec="0.15277777833;0;0"/>
+			</dmotion>
+        </part>
+    </scene>
+</document>

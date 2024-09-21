@@ -88,12 +88,12 @@
 	
 
 	\subsection*{Ejercicio 4}
-	Crear una escena que consista en un plano de suelo y un coche. El coche debe moverse en línea recta a una velocidad de $33 \;\mathrm{km}/\mathrm{h}$ durante $20$ segundos. Esta escena debe escanearse simulando un TLS equipado con RIEGL VZ400 cuyo campo de visión horizontal debe estar entre los $[-90, 90]$ grados, situado aproximadamente a $200$ metros del punto de partida del coche. La simulación debe constar de dos etapas. La primera debe cubrir el movimiento del coche, la segunda debe escanear la escena con el coche quieto tras llegar a su destino.
+	Crear una escena que consista en un plano de suelo y un coche. El coche debe moverse en línea recta a una velocidad de $33 \;\mathrm{km}/\mathrm{h}$ durante $20$ segundos. Esta escena debe escanearse simulando un TLS equipado con RIEGL VZ400 cuyo campo de visión horizontal debe estar entre los $[-40, 40]$ grados, situado aproximadamente a $200$ metros del punto de partida del coche. El campo de visión vertical debe estar entre los $[-10, 30]$ grados. La simulación debe constar de seis etapas, con una duración de $4$ segundos cada una. Las cinco primeras deben cubrir el movimiento del coche (es decir, los primeros $20$ segundos), la sexta debe escanear la escena con el coche quieto tras llegar a su destino. La Figura~\ref{fig:ejercicio4} ilustra un ejemplo de resultado que satisface las condiciones de este ejercicio. \textit{Pista: Si se usa la geometría de los ejemplos base (sceneparts/urban\_dyn/vivaro.obj) para representar el coche se debe tener en cuenta que esta malla no está centrada en el origen. Por ejemplo, el punto más bajo de la malla original sería $z=7.535804$.}
 
 	\begin{figure}[htb]
 		\centering
-		%\includegraphics[width=0.8\linewidth]{img/ejercicio4}
-		\caption{Visualización en CloudCompare de la solución del ejercicio 4.}
+		\includegraphics[width=1.0\linewidth]{img/ejercicio4}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 4. Los puntos de suelo aparecen coloreados de blanco. El coche escaneado en la primera etapa de violeta y en la última etapa de amarillo, los colores intermedios corresponden a las distintas etapas. Nótese que el movimiento se produce de izquierda a derecha}
 		\label{fig:ejercicio4}
 	\end{figure} 
 	
@@ -101,12 +101,12 @@
 	
 	
 	\subsection*{Ejercicio 5}
-	Modificar la simulación creada en el ejercicio 4 para que el coche viaje durante $9$ segundos. Añadir otro coche que comienza en el otro extremo de la recta, situado a $184$ metros del coche original y avanza en dirección hacia el primero durante $9$ segundos. La simulación debe constar también de dos etapas. La primera debe cubrir el movimiento de los coches durante $9$ segundos, la segunda debe escanear la escena con los coches quietos tras haber llegado a destino.
+	Modificar la simulación creada en el ejercicio 4 para que el coche viaje durante $9$ segundos. Añadir otro coche que comienza en el otro extremo de la recta, situado a $184$ metros del coche original y avanza en dirección hacia el primero durante $9$ segundos. En este caso, la posición del escáner debe estar aproximadamente a $150$ metros del punto de partida del primer coche y su campo de visión horizontal debe estar entre los $[-50, 50]$ grados. La simulación debe constar cuatro etapas. Las tres primeras deben cubrir el movimiento de los coches durante $9$ segundos, la segunda debe escanear la escena con los coches quietos tras haber llegado a destino. La Figura~\ref{fig:ejercicio5} ilustra un ejemplo de resultado que satisface las condiciones de este ejercicio.
 	
 	\begin{figure}[htb]
 		\centering
-		%\includegraphics[width=0.8\linewidth]{img/ejercicio5}
-		\caption{Visualización en CloudCompare de la solución del ejercicio 5.}
+		\includegraphics[width=1.0\linewidth]{img/ejercicio5}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 5. Los puntos de suelo aparecen coloreados de blanco. Los coches escaneados en la primera etapa de violeta y azul oscuro, mientras que en la última etapa ambos aparecen de amarillo. La diferencia de color se debe a que el escáner empieza por la izquierda y termina por la derecha, luego el coche que parte de la derecha será escaneado más tarde que el coche que parte de la izquierda dentro de una misma etapa.}
 		\label{fig:ejercicio5}
 	\end{figure} 
 

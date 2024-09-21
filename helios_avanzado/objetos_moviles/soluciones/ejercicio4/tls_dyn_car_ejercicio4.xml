@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <survey name="dyn_car_tls_ejercicio4" scene="helios_avanzado/objetos_moviles/soluciones/ejercicio4/dyn_car_scene_ejercicio4.xml#dyn_car_scene_ejercicio4" platform="helios_asset/platforms.xml#tripod" scanner="helios_asset/scanners_tls.xml#riegl_vz400">
+		<leg>
+            <platformSettings  x="0" y="-173.205080757" z="0" onGround="true"/>
+            <scannerSettings  active="true" pulseFreq_hz="300000" verticalAngleMin_deg="-10" verticalAngleMax_deg="30.0" scanFreq_hz="120" headRotatePerSec_deg="-20" headRotateStart_deg="40" headRotateStop_deg="-40"/>
+        </leg>
+		<leg>
+            <platformSettings  x="0" y="-173.205080757" z="0" onGround="true"/>
+            <scannerSettings  active="true" pulseFreq_hz="300000" verticalAngleMin_deg="-10" verticalAngleMax_deg="30.0" scanFreq_hz="120" headRotatePerSec_deg="-20" headRotateStart_deg="40" headRotateStop_deg="-40"/>
+        </leg>
+		<leg>
+            <platformSettings  x="0" y="-173.205080757" z="0" onGround="true"/>
+            <scannerSettings  active="true" pulseFreq_hz="300000" verticalAngleMin_deg="-10" verticalAngleMax_deg="30.0" scanFreq_hz="120" headRotatePerSec_deg="-20" headRotateStart_deg="40" headRotateStop_deg="-40"/>
+        </leg>
+		<leg>
+            <platformSettings  x="0" y="-173.205080757" z="0" onGround="true"/>
+            <scannerSettings  active="true" pulseFreq_hz="300000" verticalAngleMin_deg="-10" verticalAngleMax_deg="30.0" scanFreq_hz="120" headRotatePerSec_deg="-20" headRotateStart_deg="40" headRotateStop_deg="-40"/>
+        </leg>
+		<leg>
+            <platformSettings  x="0" y="-173.205080757" z="0" onGround="true"/>
+            <scannerSettings  active="true" pulseFreq_hz="300000" verticalAngleMin_deg="-10" verticalAngleMax_deg="30.0" scanFreq_hz="120" headRotatePerSec_deg="-20" headRotateStart_deg="40" headRotateStop_deg="-40"/>
+        </leg>
+		<leg>
+            <platformSettings  x="0" y="-173.205080757" z="0" onGround="true"/>
+            <scannerSettings  active="true" pulseFreq_hz="300000" verticalAngleMin_deg="-10" verticalAngleMax_deg="30.0" scanFreq_hz="120" headRotatePerSec_deg="-20" headRotateStart_deg="40" headRotateStop_deg="-40"/>
+        </leg>
+    </survey>
+</document>
