@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <scene id="dyn_swap_scene_ejercicio3" name="DynSwapSceneEjercicio3">
+
+
+		<!-- Ground plane -->
+		<!-- ************ -->
+		<part id="1">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="helios_asset/sceneparts/groundplane.obj" />
+            </filter>
+            <filter type="scale">
+                <param type="double" key="scale" value="120" />
+            </filter>
+			<filter type="translate">
+				<param type="vec3" key="offset" value="50.0;0;0" />
+			</filter>
+        </part>
+
+
+
+
+		<!-- Big tree -->
+		<!-- ********* -->
+		<part id="2">
+			<filter type="objloader">
+                <param type="string" key="filepath" value="helios_asset/sceneparts/black_tupelo_low.obj" />
+				<param type="string" key="up" value="y" />
+            </filter>
+			<filter type="scale">
+                <param type="double" key="scale" value="3.0" />
+            </filter>
+			<filter type="translate">
+				<param type="vec3" key="offset" value="-15.0;29.3938769134;0" />
+			</filter>
+			<!-- Nothing-->
+			<swap force_null="true">
+			</swap>
+			<!-- Small tree -->
+			<swap>
+				<filter type="objloader">
+		            <param type="string" key="filepath" value="helios_asset/sceneparts/black_tupelo_low.obj" />
+					<param type="string" key="up" value="y" />
+		        </filter>
+				<filter type="scale">
+		            <param type="double" key="scale" value="1.0" />
+		        </filter>
+				<filter type="translate">
+					<param type="vec3" key="offset" value="-15.0;29.3938769134;0" />
+				</filter>
+			</swap>
+		</part>
+
+		<!-- Small tree -->
+		<!-- ********** -->
+		<part id="3">
+			<filter type="objloader">
+                <param type="string" key="filepath" value="helios_asset/sceneparts/black_tupelo_low.obj" />
+				<param type="string" key="up" value="y" />
+            </filter>
+			<filter type="scale">
+                <param type="double" key="scale" value="1.0" />
+            </filter>
+			<filter type="translate">
+				<param type="vec3" key="offset" value="15.0;29.3938769134;0" />
+			</filter>
+			<!-- Mid tree -->
+			<swap swapStep="2">
+				<filter type="objloader">
+                	<param type="string" key="filepath" value="helios_asset/sceneparts/black_tupelo_low.obj" />
+					<param type="string" key="up" value="y" />
+		        </filter>
+				<filter type="scale">
+		            <param type="double" key="scale" value="2.0" />
+		        </filter>
+				<filter type="translate">
+					<param type="vec3" key="offset" value="15.0;29.3938769134;0" />
+				</filter>
+			</swap>
+		</part>
+    </scene>
+</document>

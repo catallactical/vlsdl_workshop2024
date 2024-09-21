@@ -1,0 +1,84 @@
+% Especificación de documento
+\documentclass[]{article}
+\setlength{\parskip}{\baselineskip} % Espacios entre párrafos
+
+% Paquetes
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, portrait, margin=1in}
+
+
+% Cabecera
+\title{HELIOS avanzado: Escáner multicanal}
+\author{Alberto Esmorís, Miguel Yermo}
+\date{}
+
+
+
+% Documento
+\begin{document}
+	
+	% Título
+	\maketitle
+	
+	
+	
+	% Introducción
+	\section*{Repetición de simulación con cambios}
+	Las simulaciones de HELIOS pueden repetirse cambiando algunos objetos y dejando lo demás constante. De esta manera puede acelerarse la generación de múltiples nubes sintéticas donde cambian sólo algunos de los objetos de la escena. Para ello, basta con definir cada cambio a través de un elemento \mbox{\textit{\textless swap \textgreater}}. Estos elementos se ejecutan de manera secuencial, conforme al orden en que se especifican. El cambio definido por un swap dura por defecto una repetición, pero puede cambiarse esto especificando el atributo \mbox{\textit{swapStep="n"}}, de manera que el cambio durará $n$ repeticiones. Un cambio puede consistir en hacer desaparecer un objeto, para ello basta con especificar el atributo \mbox{\textit{force\_null="true"}}. Dentro de un bloque swap puede ponerse cualquier especificación basada en elementos \mbox{\textit{\textless filter \textgreater}}, lo cual permite desde cargar otro archivo de geometría distinto hasta modificar el escalado o la traslación de la geometría cargada. La Figura~\ref{fig:cambios_base} representa las cuatro variaciones distintas que se generan mediante la simulación base de ejemplo. En esta simulación se escanea el mismo plano de suelo con una esfera encima, luego se escala la esfera para hacerla más grande, después se elimina la esfera, se vuelve a escalar, se vuelve a eliminar y, por último, se repite la simulación con una esfera todavía más grande.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\linewidth]{img/base}
+		\caption{Visualización en CloudCompare de la nubes de puntos ALS simuladas con un Leica ALS50. Los puntos del plano de suelo se colorean de azul, la esfera, cuando la hay, de rojo. Se representan las 4 variaciones distintas que hay en la simulación base.}
+		\label{fig:cambios_base}
+	\end{figure}
+
+
+	\pagebreak
+	
+
+	% Ejercicios
+	\subsection*{Ejercicio 1}
+	Crear una simulación donde se escaneen dos cilindros colocados sobre un plano de suelo. Acto seguido, repetir la simulación cambiando un cilindro por una esfera y el otro por un cubo. El resultado debe ser similar a la Figura~\ref{fig:ejercicio1}. \textit{Pista: Se recomienda utilizar las versiones sin material de las geometrías (archivos "\_nomat" en helios\_asset/sceneparts).}
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.75\linewidth]{img/ejercicio1}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 1. El plano de suelo violeta es el mismo en las dos simulaciones. En la primera simulación, aparecen los dos cilindros. En la repetición aparecen el cubo y la esfera.}
+		\label{fig:ejercicio1}
+	\end{figure}
+
+
+	\subsection*{Ejercicio 2}
+	Crear una simulación donde se escaneen una esfera y un cilindro. En la primera repetición el cilindro se convierte en un cubo y la esfera duplica su tamaño. En la segunda repetición el cubo desaparece y la esfera cuadriplica su tamaño. El resultado obtenido debe parecerse al que se muestra en la Figura~\ref{fig:ejercicio2}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=1.0\linewidth]{img/ejercicio2}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 2. El plano de suelo violeta es el mismo en las tres simulaciones. Las repeticiones se encuentran ordenadas de izquierda a derecha.}
+		\label{fig:ejercicio2}
+	\end{figure}
+
+	
+	\pagebreak
+	
+	
+	\subsection*{Ejercicio 3}
+	Crear una simulación donde se escaneen un árbol grande y otro árbol pequeño que tiene una tercera parte del tamaño del primero. En la segunda repetición el árbol grande desaparece y el árbol pequeño alcanza un tamaño de dos terceras partes el tamaño del árbol grande. En la tercera repetición el hueco del árbol grande se convierte en un árbol con la tercera parte del tamaño original, mientras que el segundo árbol permanece sin cambios. Los árboles pueden colocarse en cualquier lugar, pero deben permanecer centrados en el mismo sitio durante la simulación. En esta simulación debe usarse un escáner terrestre RIEGL VZ-1000 colocado en un trípode frente a los árboles, alejado aproximadamente unos $33$ metros. Cada segundo deben realizarse $100$ scanlines de $1,500$ pulsos cada una. El campo de visión vertical debe estar entre los $[-30, 60]$ grados y el horizontal entre los $[-60, 60]$ grados. Cada simulación debe disponer de $5$ segundos para el proceso de escaneo. El resultado obtenido debe parecerse al que se muestra en la Figura~\ref{fig:ejercicio3}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=1.0\linewidth]{img/ejercicio3}
+		\caption{Visualización en CloudCompare de la solución del ejercicio 3. El plano de suelo marrón es el mismo en las tres simulaciones. Las repeticiones se encuentran ordenadas de izquierda a derecha. El árbol que es inicialmente grande se representa en verde, el otro en amarillo. La nube de puntos inferior es la primera, la superior es la última.}
+		\label{fig:ejercicio3}
+	\end{figure}
+
+	
+
+\end{document}

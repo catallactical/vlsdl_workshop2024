@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <survey name="tls_dyn_swap_ejercicio3" scene="helios_avanzado/repeticion_mutante/soluciones/ejercicio3/dyn_swap_scene_ejercicio3.xml#dyn_swap_scene_ejercicio3" platform="helios_asset/platforms.xml#tripod" scanner="helios_asset/scanners_tls.xml#riegl_vz1000">
+		<leg>
+            <platformSettings  x="0" y="0.0" z="0" />
+            <scannerSettings  active="true" pulseFreq_hz="150000" verticalAngleMin_deg="-30" verticalAngleMax_deg="60.0" scanFreq_hz="100" headRotatePerSec_deg="-24" headRotateStart_deg="60" headRotateStop_deg="-60"/>
+        </leg>
+    </survey>
+</document>

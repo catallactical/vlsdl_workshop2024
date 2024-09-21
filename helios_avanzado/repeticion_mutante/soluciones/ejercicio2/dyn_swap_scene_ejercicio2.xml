@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <scene id="dyn_swap_scene_ejercicio2" name="DynSwapSceneEjercicio2">
+
+
+		<!-- Ground plane -->
+		<!-- ************ -->
+		<part id="1">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="helios_asset/sceneparts/groundplane.obj" />
+            </filter>
+            <filter type="scale">
+                <param type="double" key="scale" value="120" />
+            </filter>
+			<filter type="translate">
+				<param type="vec3" key="offset" value="50.0;0;0" />
+			</filter>
+        </part>
+
+
+
+
+		<!-- Sphere  -->
+		<!-- ******* -->
+		<part id="2">
+			<filter type="objloader">
+                <param type="string" key="filepath" value="helios_asset/sceneparts/sphere_nomat.obj" />
+            </filter>
+			<filter type="scale">
+                <param type="double" key="scale" value="1.0" />
+            </filter>
+			<filter type="translate">
+				<param type="vec3" key="offset" value="-10.0;-20.0;0" />
+			</filter>
+			<!-- Sphere x2 -->
+			<swap>
+				<filter type="scale">
+                	<param type="double" key="scale" value="2.0" />
+		        </filter>
+				<filter type="translate">
+					<param type="vec3" key="offset" value="-85.0;-55.0;-40" />
+				</filter>
+			</swap>
+			<!-- Sphere x4 -->
+			<swap>
+				<filter type="scale">
+                	<param type="double" key="scale" value="4.0" />
+		        </filter>
+				<filter type="translate">
+					<param type="vec3" key="offset" value="-235.0;-125.0;-80" />
+				</filter>
+			</swap>
+		</part>
+
+		<!-- Cylinder to Cube to Nothing -->
+		<!-- *************************** -->
+		<part id="3">
+			<filter type="objloader">
+                <param type="string" key="filepath" value="helios_asset/sceneparts/cylinder_nomat.obj" />
+            </filter>
+			<filter type="scale">
+                <param type="double" key="scale" value="1.5" />
+            </filter>
+			<filter type="translate">
+				<param type="vec3" key="offset" value="10.0;20.0;0" />
+			</filter>
+			<!-- Swap cylinder by cube -->
+			<swap>
+				<filter type="objloader">
+                	<param type="string" key="filepath" value="helios_asset/sceneparts/cube_nomat.obj" />
+		        </filter>
+					<filter type="scale">
+		            <param type="double" key="scale" value="1.5" />
+		        </filter>
+				<filter type="translate">
+					<param type="vec3" key="offset" value="-90.0;-30.0;0" />
+				</filter>
+			</swap>
+			<!-- Nothing  -->
+			<swap force_null="true">
+			</swap>
+		</part>
+    </scene>
+</document>
