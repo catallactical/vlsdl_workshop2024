@@ -1,6 +1,6 @@
 # PyHelios
 
-Materiales (en formato cuaderno de Jupyter) sobre el uso del simulador mediante su extensión para Python, PyHelios.
+Materiales (en formato cuaderno de Jupyter) sobre el uso del simulador mediante su extensión para Python, PyHelios. Se recomienda lanzar `jupyter-notebook` desde el directorio *vlsdl_workshop* y, desde la aplicación de Jupyter, navegar al directorio *pyhelios* donde se encuentran los cuadernos.
 
 
 
