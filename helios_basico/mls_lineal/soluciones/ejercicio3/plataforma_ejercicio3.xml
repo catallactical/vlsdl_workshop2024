@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<document>
+	<platform id="vehicle_linearpath" name="Vehicle" type="linearpath">
+		<scannerMount x="0" y="0" z="2.4" rotations="local">
+			<rot axis="z" angle_deg="90" />
+			<rot axis="x" angle_deg="-45" />
+		</scannerMount>
+	</platform>
+</document>
