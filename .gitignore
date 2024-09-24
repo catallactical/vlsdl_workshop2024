@@ -3,3 +3,5 @@ output/*
 tags
 *.swp
 *.scene
+tmpdir
+tmpdir/*

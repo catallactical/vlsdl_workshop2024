@@ -76,7 +76,7 @@
 
 
 	\subsection*{Ejercicio 2}
-	Modificar la simulación original del Velodyne Puck estático para que utilice el Velodyne HDL-64E de 64 canales en lugar del Velodyne VLP-16 de 16 canales. El resultado de usar un Velodyne HDL-64E debe coincidir con el que se puede ver en la Figura~\ref{fig:ejercicio2}
+	Modificar la simulación original del Velodyne Puck estático para que utilice el escáner terrestre Velodyne HDL-64E de 64 canales en lugar del Velodyne VLP-16 de 16 canales. El resultado de usar un Velodyne HDL-64E debe coincidir con el que se puede ver en la Figura~\ref{fig:ejercicio2}
 	
 	\begin{figure}[htb]
 		\centering
@@ -90,7 +90,7 @@
 	
 
 	\subsection*{Ejercicio 3}
-	Modificar la simulación original del Velodyne Puck móvil para que escanee en dos etapas. La primera etapa debe escanear una mitad de la caja moviéndose de atrás hacia adelante a lo largo del eje $x$ con una velocidad de $90\;\mathrm{km}/\mathrm{h}$ y la segunda etapa debe escanear la otra mitad moviéndose en sentido opuesto con una velocidad de $33\;\mathrm{m}/\mathrm{s}$. El resultado obtenido debe ser similar al mostrado en la Figura~\ref{fig:ejercicio3}. \textit{Pista: Como la configuración del escáner Puck es especial (ver cuaderno de Jupyter sobre Velodyne VLP-16), no será suficiente con definir un intervalo angular de $180$ grados. Se recomienda adaptar la velocidad de rotación para que el tiempo de una rotación coincida con el tiempo total de viaje, i.e., el tamaño del intervalo de rotación entre la velocidad de rotación sea igual a la distancia recorrida entre la velocidad de la plataforma.}
+	Modificar la simulación original del Velodyne Puck móvil para que escanee en dos etapas. La primera etapa debe escanear una mitad de la caja moviéndose de atrás hacia adelante a lo largo del eje $x$ con una velocidad de $90\;\mathrm{km}/\mathrm{h}$ y la segunda etapa debe escanear la otra mitad moviéndose en sentido opuesto con una velocidad de $33\;\mathrm{m}/\mathrm{s}$. El resultado obtenido debe ser similar al mostrado en la Figura~\ref{fig:ejercicio3}. \textit{Pista: Como la configuración del escáner Puck es especial (ver cuaderno de Jupyter sobre Velodyne VLP-16 en el repositorio oficial de HELIOS), no será suficiente con definir un intervalo angular de $180$ grados. Se recomienda adaptar la velocidad de rotación para que el tiempo de una rotación coincida con el tiempo total de viaje, i.e., el tamaño del intervalo de rotación entre la velocidad de rotación sea igual a la distancia recorrida entre la velocidad de la plataforma.}
 	
 	\begin{figure}[htb]
 		\centering
@@ -104,7 +104,7 @@
 	
 
 	\subsection*{Ejercicio 4}
-	Reconfigurar la simulación ALS basada en el Livox Mid-100 para utilizar un RIEGL VQ-1560i de dos canales en lugar del Livox original. Además, el intervalo angular de escaneo debe estar entre $[-15, 15]$ grados, cada segundo deben realizarse $250$ scanlines de $1000$ pulsos cada una. La plataforma debe moverse a $80\;\mathrm{km}/\mathrm{h}$, volando a una altura de $50$ metros. La trayectoría debe ser en forma de L empezando en $(-70, -20)$, pasando por $(-30, -20)$ y terminando en $(-30, 60)$. Debe crearse una plataforma específica para esta simulación donde el punto de montaje esté a medio metro de altura respecto del origen de la plataforma, rotado $-135$ grados alrededor del eje $x$ y $90$ grados alrededor del eje $z$.
+	Reconfigurar la simulación ALS basada en el Livox Mid-100 para utilizar un RIEGL VQ-1560i de dos canales en lugar del Livox original. Además, el intervalo angular de escaneo debe estar entre $[-15, 15]$ grados, cada segundo deben realizarse $250$ scanlines de $1000$ pulsos cada una. La plataforma debe moverse a $80\;\mathrm{km}/\mathrm{h}$, volando a una altura de $50$ metros. La trayectoría debe ser en forma de L empezando en $(70, -20)$, pasando por $(-30, -20)$ y terminando en $(-30, 60)$. Debe crearse una plataforma específica para esta simulación donde el punto de montaje esté a medio metro de altura respecto del origen de la plataforma, rotado $-135$ grados alrededor del eje $x$ y $90$ grados alrededor del eje $z$.
 
 	\begin{figure}[htb]
 		\centering

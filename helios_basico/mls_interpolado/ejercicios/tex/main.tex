@@ -10,6 +10,7 @@
 \usepackage{algpseudocode}
 \usepackage{graphicx}
 \usepackage{geometry}
+\usepackage{relsize}
 \geometry{a4paper, portrait, margin=1in}
 
 
@@ -56,7 +57,7 @@
 
 
 	\subsection*{Ejercicio 2}
-	Configurar una versión de la simulación base cuyo campo de visión vertical esté comprendido entre los $[-30, 30]$ grados. Además, el escáner debe realizar $80$ scanlines por segundo con $2,500$ pulsos cada una, es decir, un total de $200,000$ pulsos por segundo. El resultado de dicho ejercicio debe asemejarse a lo que se muestra en la Figura~\ref{fig:ejercicio2}.
+	Configurar una versión de la simulación base cuyo campo de visión vertical esté comprendido entre los $[-30, 30]$ grados. Además, el escáner debe emitir $200,000$ pulsos por segundo y sus scanlines deben tener $2,500$ pulsos cada una. El resultado de dicho ejercicio debe asemejarse a lo que se muestra en la Figura~\ref{fig:ejercicio2}.
 	
 	\begin{figure}[htb]
 		\centering
@@ -79,7 +80,7 @@
 	\label{eq:velocidad}
 	\end{equation}
 	
-	Comenzando por la fase de aceleración, se quiere que para $0 <= t <= t^*$ esta siga un modelo cuadrático tal que \mbox{$a(t) = a^* + kt^2$} donde $a^*$, que es el valor máximo (pico) de aceleración, y el parámetro $k$ deben resolverse para que $a(0)=0$ y $v(t^*)=v^*$. Concretamente, $t^*=7.5$ es el tiempo total que toma la aceleración (en segundos) y $v^*=2.8$ es la velocidad constante (en $\mathrm{m}/\mathrm{s}$) que será utilizada durante la fase 2).
+	Comenzando por la fase de aceleración, se quiere que para $0 \leq t \leq t^*$ esta siga un modelo cuadrático tal que \mbox{$a(t) = a^* + kt^2$} donde $a^*$, que es el valor máximo (pico) de aceleración, y el parámetro $k$ deben resolverse para que $a(0)=0$, $a(t^*/2) = a^*$ y $v(t^*)=v^*$. Concretamente, $t^*=7.5$ segundos es el tiempo total que toma la aceleración y $v^*=2.8\;\mathrm{m}/\mathrm{s}$ es la velocidad constante que será utilizada durante la fase 2).
 	
 	Durante la fase de viaje, simplemente debe mantenerse la velocidad. Sea $t_*$ el instante de tiempo en el que comienza la desaceleración, entonces la fase 2) debe satisfacer $a(t) = 0$, $t^* < t < t_*$.
 	
@@ -108,7 +109,8 @@
 	Será necesario también modificar el script de generación de la trayectoria para modelizar el comportamiento de la plataforma. En primer lugar, se resuelve $v(t)$ como se muestra en la Ecuación~\ref{eq:velocidad_solucion}.
 	
 	\begin{equation}
-		v(t) = a^*t + k\left[
+		v(t) = \mathlarger{\int}{\left[a^* + k\left(t-\dfrac{t^*}{2}\right)^2\right] dt} =
+			a^*t + k\left[
 			\dfrac{t^3}{3} - \dfrac{t^*t^2}{2} + \left(\dfrac{t^*}{2}\right)^2t
 		\right]
 		\label{eq:velocidad_solucion}
