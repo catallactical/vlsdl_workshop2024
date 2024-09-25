@@ -15,8 +15,11 @@ SCRIPT_DIR=$(dirname -- "$(readlink -f "$0")")
 cd $HOME
 mkdir -p git
 cd git
-git clone -b dev https://github.com/3dgeo-heidelberg/helios
+git clone -b devel https://github.com/albertoesmp/helios.git
 
+
+# Change paths in helios/local_env.sh with sed
+sed -i 's/HELIOS_DIR=.*/HELIOS_DIR=$HOME\/git\/helios\//' $HOME/git/helios/scripts/local_env.sh
 
 # Install dependencies
 cd helios
