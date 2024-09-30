@@ -11,10 +11,8 @@ Materiales para taller sobre simulación LiDAR y aprendizaje computacional para 
   * Materiales sobre el uso avanzado del simulador. Por ejemplo, escáner multicanal, simulación con movimientos rígidos y simulación con cambios en caliente.
 * *pyhelios*
   * Materiales sobre el uso del simulador mediante scripts en Python.
-* *vl3d_real*
-  * Materiales sobre el uso de inteligencia artificial aplicada a nubes de puntos.
 * *vl3d_vls*
-  * Materiales sobre el uso de inteligencia artificial entrenada mediante simulación LiDAR.
+  * Materiales sobre inteligencia artificial entrenada mediante simulación láser.
 
 
 

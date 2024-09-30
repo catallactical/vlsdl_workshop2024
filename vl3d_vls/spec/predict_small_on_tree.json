@@ -1,0 +1,30 @@
+{
+  "in_pcloud": [
+	"vl3d_vls/data/real/PinSyl_KA10_03_2019-07-30_q2_TLS-on_UPDATED.laz"
+  ],
+  "out_pcloud": [
+	"vl3d_vls/out/Geometric_RF_on_wytham_woods/prediction/PinSyl/*"
+  ],
+  "sequential_pipeline": [
+    {
+      "predict": "PredictivePipeline",
+	  "model_path": "vl3d_vls/out/Geometric_RF_on_wytham_woods/pipe/LeafWood_Training_RF.pipe" 
+    },
+	{
+	  "writer": "ClassifiedPcloudWriter",
+	  "out_pcloud": "*predicted.laz"
+	},
+	{
+	  "eval": "ClassificationEvaluator",
+	  "class_names": ["Wood", "Leaf"],
+	  "metrics": ["OA", "P", "R", "F1", "IoU", "wP", "wR", "wF1", "wIoU", "MCC", "Kappa"],
+      "class_metrics": ["P", "R", "F1", "IoU"],
+	  "report_path": "*report/global_eval.log",
+	  "class_report_path": "*report/class_eval.log",
+	  "confusion_matrix_report_path" : "*report/confusion_matrix.log",
+	  "confusion_matrix_plot_path" : "*plot/confusion_matrix.svg",
+	  "class_distribution_report_path": "*report/class_distribution.log",
+	  "class_distribution_plot_path": "*plot/class_distribution.svg"
+	}
+  ]
+}

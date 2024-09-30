@@ -1,0 +1,10 @@
+Data from the Wytham_Woods_3D_model BitBucket repository, branch "add_dart"
+
+Repo: https://bitbucket.org/tree_research/wytham_woods_3d_model/src/master/
+add_dart branch: https://bitbucket.org/tree_research/wytham_woods_3d_model/src/add_dart/
+3D models: https://bitbucket.org/tree_research/wytham_woods_3d_model/src/add_dart/DART_models/3D-explicit%20model/Trees/
+--> OBJs in folder "trees_has_leaf" + material file "Merisier_Adulte.mtl"
+
+Material file was modified to include the `helios_classification` attribute
+
+Furthermore, tree species were obtained from the original dataset and appended to the filenames with the script "species_to_filename.py"

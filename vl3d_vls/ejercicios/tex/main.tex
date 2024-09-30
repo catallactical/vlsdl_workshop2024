@@ -1,0 +1,131 @@
+% Especificación de documento
+\documentclass[]{article}
+\setlength{\parskip}{\baselineskip} % Espacios entre párrafos
+
+% Paquetes
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{relsize}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[spanish,es-tabla]{babel}
+\geometry{a4paper, portrait, margin=1in}
+
+% Desactivar resaltado de referencias
+\hypersetup{
+	colorlinks,
+	linkcolor={red!50!black},
+	citecolor={blue!50!black},
+	urlcolor={blue!80!black}
+}
+
+
+% Cabecera
+\title{Simulación láser e inteligencia artificial}
+\author{Alberto Esmorís, Miguel Yermo}
+\date{}
+
+
+
+% Documento
+\begin{document}
+	
+	% Título
+	\maketitle
+	
+	
+	
+	% Introducción
+	\subsection*{Introducción}
+	En este documento se explica como entrenar modelos de inteligencia artificial utilizando nubes de puntos generadas por simulación y se estudia su generalización a nubes reales, es decir, aquellas adquiridas a través de una campaña de escaneo en el mundo real. Se utilizarán dos datasets virtuales, uno simulando a partir de los datos \cite{wytham_woods} y otro utilizando el algoritmo de \cite{proc_trees} para generar mallas de árboles. Con estas nubes sintéticas se entrenan modelos de IA basados en RandomForest utilizando el framework VirtuaLearn3D (cuya documentación puede consultarse en \url{https://catallactical.com/python_docs}). Finalmente se evalúa el rendimiento de estos modelos en un árbol aislado tomado del dataset \cite{weiser_dataset} y una región de bosque del dataset \cite{wang_dataset}. Puede leerse más sobre modelos de aprendizaje computacional para nubes de puntos con datos simulados en \cite{vlsdl}. En general, los archivos JSON del framework de inteligencia artificial pueden lanzarse con:
+	
+	\begin{verbatim}	
+	python vl3d.py --pipeline <RUTA AL JSON>
+	\end{verbatim}
+	
+	
+	% Simulación
+	\subsection*{Simulación}
+	Las simulaciones no se realizarán directamente ya que toman bastante tiempo y requieren descargar o generar geometrías grandes (del orden de cientos de megabytes). Puede verse un ejemplo de como configurar la simulación usando los datos \cite{wytham_woods} en los archivos del directorio \textit{vl3d\_vls/helios/wytham\_woods}. Las nubes simuladas se ofrecen directamente en los directorios  \mbox{\textit{vl3d\_vls/data/vls/tls\_wytham\_woods\_3SPs\_4\_sub05mm.laz}} para \cite{wytham_woods} y \hfill \\ \mbox{\textit{vl3d\_vls/data/vls/tls\_sapling\_trees\_near\_nogro.laz}} para \cite{proc_trees}. La Figura~\ref{fig:vls_training} muestras las nubes de puntos sintéticas generadas mediante simulación. La nube etiquetada como \textit{Sapling trees} corresponde con los árboles generados procedimentalmente con \cite{proc_trees} y la nube etiquetada como \textit{Wytham woods} corresponde con las simulaciones basadas en los datos \cite{wytham_woods}.
+	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\linewidth]{img/vls_training}
+		\caption{Visualización en CloudCompare de las nubes de puntos simuladas que se utilizarán para entrenar los modelos de aprendizaje computacional.}
+		\label{fig:vls_training}
+	\end{figure}
+	
+	
+	\pagebreak
+	
+	% Entrenamiento
+	\subsection*{Entrenamiento}
+	Para entrenar el modelo pequeño en el dataset \cite{wytham_woods} se utilizó el archivo JSON \mbox{\textit{vl3d\_vls/spec/training\_small.json}} y para entrenar el modelo medio en el dataset de árboles procedimentalmente generados con \cite{proc_trees} se usó el archivo JSON \mbox{\textit{vl3d\_vls/spec/training.json}}. El modelo pequeño debería poder entrenarse con $8-16$ GiB de RAM, mientras que el modelo medio requerirá $16-32$ GiB de RAM. Además, es posible que sea necesario limitar el número de hilos utilizados para entrenar el modelo RandomForest en paralelo para evitar que se dispare el consumo de memoria, dependiendo del hardware disponible.
+	
+	
+	% Validación
+	\subsection*{Validación}
+	Las validaciones del modelo pequeño pueden realizarse con los archivos JSON en \hfill \\ \mbox{\textit{vl3d\_vls/spec/predict\_small\_on\_tree.json}} y \mbox{\textit{vl3d\_vls/spec/predict\_small\_on\_forest.json}} \hfill \\
+	para el caso de un árbol y de una región de bosque, respectivamente. En cuanto al modelo medio, puede validarse en el caso de un árbol con el JSON en \mbox{\textit{vl3d\_vls/spec/predict\_on\_tree.json}} y para el caso de una región de bosque con \mbox{\textit{vl3d\_vls/spec/predict\_on\_forest.json}}.
+	
+	
+	% Resultados
+	\subsection*{Resultados}	
+	Los resultados obtenidos tras validar los modelos deberían ser similares a los que se muestran en la Tabla~\ref{tab:resultados}. Pueden ocurrir ligeras variaciones en las métricas debido a la aleatoriedad en la selección de muestras para construir los árboles de decisión del RandomForest. Visualmente los resultados de clasificar un árbol aislado en datos reales nunca antes vistos deberían parecerse a los que se muestran en la Figura~\ref{fig:prediction_on_tree}, mientras que la clasificación de una región de bosque debería coincidir con la Figura~\ref{fig:prediction_on_forest}.
+	
+	\begin{table}[H]
+	\begin{tabular}{cc|crrr}	
+		\textbf{Datos entrenamiento} & \textbf{Puntos} ($10^6$) & \textbf{Datos validación} & \textbf{OA} (\%) & \textbf{F1} (\%) & \textbf{MCC} (\%) \\
+		\hline
+		\multirow{2}{8em}{Wytham woods} & \multirow{2}{4em}{\raggedleft 3.02} &
+		Árbol (PinSyl\_KA10) & 77.07 & 72.13 & 46.95 \\ & & 
+		Bosque (Wang1) & 83.06  & 77.13  & 55.95 \\
+		\hline
+		\multirow{2}{8em}{Sapling trees} & \multirow{2}{4em}{\raggedleft 53.67} &
+		Árbol (PinSyl\_KA10) & 87.63 & 85.27 & 72.63 \\ & &
+		Bosque (Wang1) & 88.43 & 85.72 & 71.46 \\
+		\hline		
+	\end{tabular}
+		\caption{Resultados de los modelos entrenados mediante simulación evaluados en datos reales nunca antes vistos.}
+		\label{tab:resultados}
+	\end{table}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\linewidth]{img/prediction_on_tree}
+		\caption{Visualización en CloudCompare de la nube de puntos real con un único árbol clasificada a partir de los modelos entrenados con datos simulados. A la izquierda la referencia (clasificación manual), en el centro la clasificación del modelo entrenado con pocos datos simulados y a la derecha la clasificación del modelo entrenado con mayor cantidad de datos simulados.}
+		\label{fig:prediction_on_tree}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\linewidth]{img/prediction_on_forest}
+		\caption{Visualización en CloudCompare de la nube de puntos real representando un bosque clasificada a partir de los modelos entrenados con datos simulados. A la izquierda la referencia (clasificación manual), en el centro la clasificación del modelo entrenado con pocos datos simulados y a la derecha la clasificación del modelo entrenado con mayor cantidad de datos simulados.}
+		\label{fig:prediction_on_forest}
+	\end{figure}
+
+
+	\pagebreak
+	
+	
+	% Bibliografía
+	\begin{thebibliography}{biblio}
+		\bibitem[Wytham woods dataset]{wytham_woods} Calders, K., Verbeeck, H., Burt, A., Origo, N., Nightingale, J., Malhi, Y., Wilkes, P., Raumonen, P., Bunce, R., \& Disney, M. (2022). Terrestrial laser scanning data Wytham Woods: individual trees and quantitative structure models (QSMs) (Version 1.0). Zenodo. \mbox{\url{https://doi.org/10.5281/zenodo.7307956}}
+		
+		\bibitem[Weiser dataset]{weiser_dataset} Weiser, Hannah; Schäfer, Jannika; Winiwarter, Lukas; Krašovec, Nina; Seitz, Christian; Schimka, Marian; Anders, Katharina; Baete, Daria; Braz, Andressa Soarez; Brand, Johannes; Debroize, Denis; Kuss, Paula; Martin, Lioba Lucia; Mayer, Angelo; Schrempp, Torben; Schwarz, Lisa-Maricia; Ulrich, Veit; Fassnacht, Fabian E; Höfle, Bernhard (2022): Terrestrial, UAV-borne, and airborne laser scanning point clouds of central European forest plots, Germany, with extracted individual trees and manual forest inventory measurements. PANGAEA, \mbox{\url{https://doi.org/10.1594/PANGAEA.942856}}
+		
+		\bibitem[LeWoS dataset]{wang_dataset} Wang, Di; Takoudjou, Stéphane Momo; Casella, Eric (2021). LeWoS: A universal leaf‐wood classification method to facilitate the 3D modelling of large tropical trees using terrestrial LiDAR. Dryad. \mbox{\url{https://doi.org/10.5061/dryad.np5hqbzp6}}
+		
+		\bibitem[Tree creation]{proc_trees} Jason Weber and Joseph Penn. 1995. Creation and rendering of realistic trees. In Proceedings of the 22nd annual conference on Computer graphics and interactive techniques (SIGGRAPH '95). Association for Computing Machinery, New York, NY, USA, 119–128. \mbox{\url{https://doi.org/10.1145/218380.218427}}
+		
+		\bibitem[VLS-DL]{vlsdl} Alberto M. Esmorís, Hannah Weiser, Lukas Winiwarter, Jose C. Cabaleiro, Bernhard Höfle (2024): Deep learning with simulated laser scanning data for 3D point cloud classification. ISPRS Journal of Photogrammetry and Remote Sensing. \mbox{\url{https://doi.org/10.1016/j.isprsjprs.2024.06.018}}
+	\end{thebibliography}
+
+\end{document}

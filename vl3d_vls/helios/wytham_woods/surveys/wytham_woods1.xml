@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <document>
+        <scannerSettings id="scan1" active="true" verticalAngleMin_deg="-40" verticalAngleMax_deg="60" pulseFreq_hz="300000" scanFreq_hz="20.74" headRotatePerSec_deg="0.35258"/>
+        <survey name="tls_wytham_woods1" platform="data/platforms.xml#tripod" scanner="data/scanners_tls.xml#riegl_vz400" scene="data/scenes/wytham_woods/set1.xml#dataset1">
+        <FWFSettings beamSampleQuality="3" winSize_ns="1.5"/>
+        
+        <!-- leg000 -->
+        <leg>
+            <platformSettings x="35.00" y="0.00" z="0.0" />
+            <scannerSettings template="scan1" trajectoryTimeInterval_s="1" headRotateStart_deg="45.0" headRotateStop_deg="135.0"/>
+        </leg>
+        
+        <!-- leg001 -->
+        <leg>
+            <platformSettings x="17.50" y="30.31" z="0.0" />
+            <scannerSettings template="scan1" trajectoryTimeInterval_s="1" headRotateStart_deg="105.0" headRotateStop_deg="195.0"/>
+        </leg>
+        
+        <!-- leg002 -->
+        <leg>
+            <platformSettings x="-17.50" y="30.31" z="0.0" />
+            <scannerSettings template="scan1" trajectoryTimeInterval_s="1" headRotateStart_deg="165.0" headRotateStop_deg="255.0"/>
+        </leg>
+        
+        <!-- leg003 -->
+        <leg>
+            <platformSettings x="-35.00" y="0.00" z="0.0" />
+            <scannerSettings template="scan1" trajectoryTimeInterval_s="1" headRotateStart_deg="225.0" headRotateStop_deg="315.0"/>
+        </leg>
+        
+        <!-- leg004 -->
+        <leg>
+            <platformSettings x="-17.50" y="-30.31" z="0.0" />
+            <scannerSettings template="scan1" trajectoryTimeInterval_s="1" headRotateStart_deg="285.0" headRotateStop_deg="375.0"/>
+        </leg>
+        
+        <!-- leg005 -->
+        <leg>
+            <platformSettings x="17.50" y="-30.31" z="0.0" />
+            <scannerSettings template="scan1" trajectoryTimeInterval_s="1" headRotateStart_deg="344.99999999999994" headRotateStop_deg="434.99999999999994"/>
+        </leg>
+        
+        </survey>
+    </document>
+    

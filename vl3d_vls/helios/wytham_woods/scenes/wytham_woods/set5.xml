@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <scene id="dataset5" name="Wytham Woods 5">
+        
+        <part>
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data\sceneparts\wytham_woods\tree_95_ACERPS.obj" />
+                <param type="string" key="up" value="y" />
+            </filter>
+            
+            <filter type="translate">  
+                <param type="integer" key="onGround" value="0" />
+                <param type="vec3" key="offset" value="1.488095238095255;9.047619047619065;0" /> 
+            </filter>
+
+        </part>
+
+        <part>
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data\sceneparts\wytham_woods\tree_15_QUERRO.obj" />
+                <param type="string" key="up" value="y" />
+            </filter>
+            
+            <filter type="translate">  
+                <param type="integer" key="onGround" value="0" />
+                <param type="vec3" key="offset" value="-36.60714285714285;-5.238095238095227;0" /> 
+            </filter>
+
+        </part>
+
+        <part>
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data\sceneparts\wytham_woods\tree_223_ACERPS.obj" />
+                <param type="string" key="up" value="y" />
+            </filter>
+            
+            <filter type="translate">  
+                <param type="integer" key="onGround" value="0" />
+                <param type="vec3" key="offset" value="-15.014772630873168;-27.261904761904745;0" /> 
+            </filter>
+
+        </part>
+
+        <part>
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data\sceneparts\wytham_woods\tree_163_ACERPS.obj" />
+                <param type="string" key="up" value="y" />
+            </filter>
+            
+            <filter type="translate">  
+                <param type="integer" key="onGround" value="0" />
+                <param type="vec3" key="offset" value="9.092370226269693;-31.72619047619046;0" /> 
+            </filter>
+
+        </part>
+
+        <part>
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data\sceneparts\wytham_woods\tree_293_ACERPS.obj" />
+                <param type="string" key="up" value="y" />
+            </filter>
+            
+            <filter type="translate">  
+                <param type="integer" key="onGround" value="0" />
+                <param type="vec3" key="offset" value="24.56856070246016;-20.119047619047606;0" /> 
+            </filter>
+
+        </part>
+
+        <part>
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data\sceneparts\wytham_woods\tree_316_ACERPS.obj" />
+                <param type="string" key="up" value="y" />
+            </filter>
+            
+            <filter type="translate">  
+                <param type="integer" key="onGround" value="0" />
+                <param type="vec3" key="offset" value="35.878084511983985;-1.0714285714285552;0" /> 
+            </filter>
+
+        </part>
+
+        <part>
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data\sceneparts\wytham_woods\tree_279_ACERPS.obj" />
+                <param type="string" key="up" value="y" />
+            </filter>
+            
+            <filter type="translate">  
+                <param type="integer" key="onGround" value="0" />
+                <param type="vec3" key="offset" value="-29.59810596420651;25.416666666666686;0" /> 
+            </filter>
+
+        </part>
+
+        <part>
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data\sceneparts\wytham_woods\tree_262_ACERPS.obj" />
+                <param type="string" key="up" value="y" />
+            </filter>
+            
+            <filter type="translate">  
+                <param type="integer" key="onGround" value="0" />
+                <param type="vec3" key="offset" value="23.973322607222073;31.071428571428598;0" /> 
+            </filter>
+
+        </part>
+    </scene>
+</document>

@@ -1,0 +1,160 @@
+{
+  "in_pcloud": [
+	"vl3d_vls/data/vls/tls_sapling_trees_near_nogro.laz"
+  ],
+  "out_pcloud": [
+	"vl3d_vls/out/Geometric_RF_on_sapling_trees/*"
+  ],
+  "sequential_pipeline": [
+	{
+		"miner": "FPSDecorated",
+		"fps_decorator": {
+			"num_points": "m/10",
+			"fast": true,
+			"num_encoding_neighbors": 1,
+			"num_decoding_neighbors": 1,
+			"release_encoding_neighborhoods": false,
+			"threads": -1,
+			"representation_report_path": null
+		},
+		"decorated_miner": {
+			"miner": "GeometricFeatures",
+			"in_pcloud": null,
+			"out_pcloud": null,
+			"radius": 0.5,
+			"fnames": ["linearity", "planarity", "surface_variation", "verticality", "anisotropy"],
+			"frenames": ["linearity_r0_5", "planarity_r0_5", "surface_variation_r0_5", "verticality_r0_5", "anisotropy_r0_5"],
+			"nthreads": -1
+		}
+	},
+	{
+		"miner": "FPSDecorated",
+		"fps_decorator": {
+			"num_points": "m/10",
+			"fast": true,
+			"num_encoding_neighbors": 1,
+			"num_decoding_neighbors": 1,
+			"release_encoding_neighborhoods": false,
+			"threads": -1,
+			"representation_report_path": null
+		},
+		"decorated_miner": {
+			"miner": "GeometricFeatures",
+			"in_pcloud": null,
+			"out_pcloud": null,
+			"radius": 0.75,
+			"fnames": ["linearity", "planarity", "surface_variation", "verticality", "anisotropy"],
+			"frenames": ["linearity_r0_75", "planarity_r0_75", "surface_variation_r0_75", "verticality_r0_75", "anisotropy_r0_75"],
+			"nthreads": -1
+		}
+	},
+	{
+		"miner": "FPSDecorated",
+		"fps_decorator": {
+			"num_points": "m/20",
+			"fast": true,
+			"num_encoding_neighbors": 1,
+			"num_decoding_neighbors": 1,
+			"release_encoding_neighborhoods": false,
+			"threads": -1,
+			"representation_report_path": null
+		},
+		"decorated_miner": {
+			"miner": "GeometricFeatures",
+			"in_pcloud": null,
+			"out_pcloud": null,
+			"radius": 1.0,
+			"fnames": ["linearity", "planarity", "surface_variation", "verticality", "anisotropy"],
+			"frenames": ["linearity_r1", "planarity_r1", "surface_variation_r1", "verticality_r1", "anisotropy_r1"],
+			"nthreads": -1
+		}
+	},
+	{
+		"miner": "FPSDecorated",
+		"fps_decorator": {
+			"num_points": "m/20",
+			"fast": true,
+			"num_encoding_neighbors": 1,
+			"num_decoding_neighbors": 1,
+			"release_encoding_neighborhoods": false,
+			"threads": -1,
+			"representation_report_path": null
+		},
+		"decorated_miner": {
+			"miner": "GeometricFeatures",
+			"in_pcloud": null,
+			"out_pcloud": null,
+			"radius": 1.5,
+			"fnames": ["linearity", "planarity", "surface_variation", "verticality", "anisotropy"],
+			"frenames": ["linearity_r1_5", "planarity_r1_5", "surface_variation_r1_5", "verticality_r1_5", "anisotropy_r1_5"],
+			"nthreads": -1
+		}
+	},
+	{
+		"miner": "FPSDecorated",
+		"fps_decorator": {
+			"num_points": "m/30",
+			"fast": true,
+			"num_encoding_neighbors": 1,
+			"num_decoding_neighbors": 1,
+			"release_encoding_neighborhoods": false,
+			"threads": -1,
+			"representation_report_path": null
+		},
+		"decorated_miner": {
+			"miner": "GeometricFeatures",
+			"in_pcloud": null,
+			"out_pcloud": null,
+			"radius": 2.0,
+			"fnames": ["linearity", "planarity", "surface_variation", "verticality", "anisotropy"],
+			"frenames": ["linearity_r2", "planarity_r2", "surface_variation_r2", "verticality_r2", "anisotropy_r2"],
+			"nthreads": -1
+		}
+	},
+	{
+	  "imputer": "UnivariateImputer",
+	  "fnames": ["AUTO"],
+	  "target_val": "NaN",
+	  "strategy": "mean",
+	  "constant_val": 0
+	},
+	{
+	  "train": "RandomForestClassifier",
+	  "fnames": ["AUTO"],
+	  "training_type": "base",
+	  "class_names": ["Wood", "Leaf"],
+	  "random_seed": null,
+	  "shuffle_points": true,
+	  "num_folds": 1,
+	  "model_args": {
+		"n_estimators": 40,
+		"criterion": "entropy",
+		"max_depth": 20,
+		"min_samples_split": 5,
+		"min_samples_leaf": 1,
+		"min_weight_fraction_leaf": 0.0,
+		"max_features": "sqrt",
+		"max_leaf_nodes": null,
+		"min_impurity_decrease": 0.0,
+		"bootstrap": true,
+		"oob_score": false,
+		"n_jobs": -1,
+		"warm_start": false,
+		"class_weight": null,
+		"ccp_alpha": 0.0,
+		"max_samples": 0.8
+	  }
+	},
+	{
+	  "writer": "PredictivePipelineWriter",
+	  "out_pipeline": "*pipe/LeafWood_Training_RF.pipe",
+	  "include_writer": false,
+	  "include_imputer": true,
+	  "include_feature_transformer": true,
+	  "include_miner": true,
+	  "include_class_transformer": false,
+	  "include_clustering": false,
+	  "ignore_predictions": false
+	}
+  ]
+}
