@@ -8,7 +8,7 @@
 
 
 # Get dependencies from aptitude
-apt-get update && apt-get install -y build-essential dkms gcc-10 g++-10 pkgconf cmake sqlite3 libsqlite3-dev libtiff-dev libcurlpp-dev python3-dev \
+apt-get update && apt-get install -y build-essential wget dkms gcc-10 g++-10 pkgconf cmake sqlite3 libsqlite3-dev libtiff-dev libcurlpp-dev python3-dev \
     git git-lfs unzip liblapack-dev libblas-dev
 
 # Symbolic link to use gcc-10 and g++10
