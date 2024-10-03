@@ -1,0 +1,18 @@
+services:
+  helios_builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../:/git:rw  # Mount the parent directory of 'instalacion'
+    working_dir: /git
+    container_name: helios_vlsdl_workshop
+    environment:
+      - USER=dev
+    stdin_open: true  # Keep stdin open to run bash interactively
+    tty: true  # Allocate a pseudo-TTY for bash
+    
+volumes:
+  helios_volume:
+    driver: local
+
