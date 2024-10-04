@@ -1,4 +1,4 @@
-# Use the official Ubuntu 22.04 base image
+# Use the official Ubuntu 24.04 base image
 FROM ubuntu:24.04
 
 # Set environment variable to prevent some interaction issues
