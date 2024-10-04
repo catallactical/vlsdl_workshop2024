@@ -37,7 +37,7 @@ El directorio de instalación será $HOME/git/helios
 
 ### QoL
 
-Añada el directorio de Helios++ a su `PATH` para poder ejecutar las simulaciones de Helios++ desde cualquier lugar. Para ello, añada la siguiente línea a su archivo `.bashrc`:
+Añada el directorio de Helios++ a su `PATH` para poder ejecutar las simulaciones de Helios++ desde cualquier lugar. Para ello, ejecute en su terminal o añada la siguiente línea a su archivo `.bashrc`:
 
 ```bash
 export PATH=$PATH:$HOME/git/helios
