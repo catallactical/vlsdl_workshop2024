@@ -10,7 +10,7 @@
 # Get script dir
 SCRIPT_DIR=$(dirname -- "$(readlink -f "$0")")
 
-PYTHON_DOT_VERSION=3.12
+PYTHON_DOT_VERSION=3.10
 
 # Remove dot from version
 PYTHON_VERSION=$(echo $PYTHON_DOT_VERSION | tr -d '.')
