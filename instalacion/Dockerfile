@@ -16,15 +16,20 @@ RUN apt-get upgrade && apt-get update && apt-get install -y \
   && rm -rf /var/lib/apt/lists/*
 
 COPY helios_cmake /git/helios_cmake
+COPY ubuntu_install_py310.sh /git/ubuntu_install_py310.sh
 COPY helios_linux_install.sh /git/helios_linux_install.sh
 COPY ubuntu_dependencies.sh /git/ubuntu_dependencies.sh
 
 
 WORKDIR /git
 
-RUN chmod +x helios_linux_install.sh ubuntu_dependencies.sh
+RUN chmod +x ubuntu_install_py310.sh helios_linux_install.sh ubuntu_dependencies.sh
+RUN ./ubuntu_install_py310.sh
 RUN ./ubuntu_dependencies.sh
 RUN ./helios_linux_install.sh
+
+ENV PYTHONPATH="/root/git/helios/cmake-build-release"
+ENV PATH="/root/git/helios:$PATH"
 
 WORKDIR /root
 
