@@ -32,7 +32,7 @@ Quédese con la notación MAJOR.MINOR. Por ejemplo, si la versión es 3.8.5, qu�
 
 En `helios_linux_install.sh`, sustituya `PYTHON_DOT_VERSION` por la notación MAJOR.MINOR que obtuvo en el paso anterior.
 
-Ejecute `sudo ./ubuntu_dependencies.sh` y `sudo ./helios_linux_install.sh` dentro del directorio _instalacion_, en ese orden. Esto instalará Helios++ en su máquina.
+Ejecute `sudo ./ubuntu_dependencies.sh` y `sudo -E ./helios_linux_install.sh` dentro del directorio _instalacion_, en ese orden. Esto instalará Helios++ en su máquina.
 
 El directorio de instalación de Helios++ es `$HOME/git/helios`.
 
