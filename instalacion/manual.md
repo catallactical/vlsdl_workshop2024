@@ -86,7 +86,7 @@ export PATH=$PATH:$HOME/git/helios
 
 ### Compilación de _bindings_
 
-El _framework_ VirtuaLearn3D ya se encuentra en este mismo directorio, en el directorio `vl3d`. Se deben compilar los _bindings_ de C++. Para ello, ejecute `sudo ./vl3d_linux_install.sh` desde el directorio de instalación. El _script_ instala un entorno conda (y conda, en caso de no tenerlo) llamado **vl3d**. Cuando termine la ejecución del _script_, debe configurar conda y activar el entorno **vl3d**. Para ello, ejecute:
+El _framework_ VirtuaLearn3D ya se encuentra en este mismo directorio, en el directorio `vl3d`. Se deben compilar los _bindings_ de C++. Para ello, ejecute `sudo -E ./vl3d_linux_install.sh` desde el directorio de instalación. El _script_ instala un entorno conda (y conda, en caso de no tenerlo) llamado **vl3d**. Cuando termine la ejecución del _script_, debe configurar conda y activar el entorno **vl3d**. Para ello, ejecute:
 
 ```bash
 export PATH=$HOME/miniconda3/bin:$PATH # Hacemos visible al shell el directorio de instalación de conda
