@@ -74,6 +74,8 @@ jupyter notebook --allow-root --ip 0.0.0.0 --no-browser
 
 A continuación, pegue en un navegador web la URL proporcionada en la terminal.
 
+El primer bloque de cada cuaderno se utiliza para configurar el entorno del sistema. Sustituya `PYHELIOS_LIB_PATH` por la ruta donde se ha compilado Helios (`/root/git/helios/cmake-build-release`, por ejemplo) y `HELIOS_PATH` por el directorio raíz de Helios (`/root/git/helios`).
+
 ### QoL
 
 Añada el directorio de Helios++ a su `PATH` para poder ejecutar las simulaciones de Helios++ desde cualquier lugar. Para ello, ejecute en su terminal o añada la siguiente línea a su archivo `.bashrc`:
